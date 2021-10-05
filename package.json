@@ -1,0 +1,27 @@
+{
+  "name": "testdiscordbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "canvas": "^2.8.0",
+    "chrome-launcher": "^0.14.0",
+    "cron": "^1.8.2",
+    "discord.js": "^12.5.3",
+    "fs": "0.0.1-security",
+    "mal-scraper": "^2.11.3",
+    "node-cron": "^3.0.0",
+    "node.js": "^0.0.1-security",
+    "process": "^0.11.10",
+    "puppeteer": "^10.0.0",
+    "querystring": "^0.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
