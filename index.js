@@ -6,8 +6,6 @@ const {
 } = require("discord.js");
 const puppeteer = require("puppeteer");
 const fs = require("fs");
-const { config } = require("process");
-const malScraper = require("mal-scraper");
 // var cron = require("node-cron");/
 
 const client = new Client();
@@ -15,8 +13,9 @@ const client = new Client();
 const prefix = require("./json/prefix.json");
 const json = require("./json/img.json");
 const commands = require("./json/commands.json");
-const clachouxRef = require("./json/clachouxRef.json");
 const token = require("./json/token.json");
+const clachouxRef = require("./json/clachouxRef.json");
+const maatTroll = ["troll", "trolltou", "flemmme", ":eyes:"];
 
 let arrayOfSentences = require("./json/readingSentence.json");
 
@@ -24,7 +23,6 @@ let overallTableOfExits = [];
 
 configFileGenerator();
 main();
-
 
 function main() {
   client.login(token.token);
@@ -37,10 +35,8 @@ function main() {
   });
 }
 var mangas = [];
-function getKusoCatEmoji(){
-  return client.emojis.cache.find(
-    (emoji) => emoji.name === "kuso_cat"
-  );
+function getKusoCatEmoji() {
+  return client.emojis.cache.find((emoji) => emoji.name === "kuso_cat");
 }
 async function japanreadScraper() {
   var tempMangas = [];
@@ -114,7 +110,7 @@ async function japanreadScraper() {
             .split(/[\s-]/);
           if (timerArray[1] === "s" || timer[0].innerText.includes("min")) {
             if (
-              (timerArray[1] == "min" && timerArray[0] <= 20) ||
+              (timerArray[1] == "min" && timerArray[0] <= 17) ||
               timerArray[1] == "s"
             ) {
               hugeArray.push({
@@ -259,90 +255,19 @@ function normalBotCommands() {
     "Méchant :rage: ",
   ];
 
-  // const insults = [
-  //   "connard",
-  //   "salaud",
-  //   "pd",
-  //   "fdp",
-  //   "connart",
-  //   "connar",
-  //   "con",
-  //   "pute",
-  //   "salope",
-  //   "salop",
-  //   "salaud",
-  //   "conard, enculé, enculés, anculé, enculée, encullé, encullés",
-  // ];
-  
   client.on("message", gotMessage);
-
-  const maatTroll = ["troll", "trolltou", "flemmme", ":eyes:"];
 
   function gotMessage(msg) {
     // let foundInText = false;
     // //je vérifie si le message contient une insulte
+
     let firstword = msg.content.split(" ");
-    if (msg.content.includes(`${prefix.prefix}anime `)) {
-      let messageWithoutCommand = msg.content;
-      messageWithoutCommand = messageWithoutCommand.substr(7);
+    let anime = require("./commands/anime");
+    anime.getAnime(msg);
+    let help = require("./commands/help");
+    help.generateHelpEmbed(msg, commands);
+    clachoux(msg);
 
-      malScraper
-        .getInfoFromName(messageWithoutCommand, true)
-        .then((data) => {
-          console.log(data.title);
-          console.log(data.synopsis);
-          console.log(data.picture);
-          console.log(data.episodes);
-          console.log(data.genres);
-          console.log(data.episodes);
-          console.log(data.score);
-          console.log(data.popularity);
-          const MALembed = new MessageEmbed();
-          // Set the title of the field
-          MALembed.setTitle(data.title);
-
-          MALembed.setThumbnail(data.picture);
-          MALembed.setDescription(`Synopsis : \n ${data.synopsis}`);
-          MALembed.addFields({
-            name: "Nombre d'épisodes",
-            value: data.episodes,
-            inline: false,
-          });
-          MALembed.addFields({
-            name: "Genres : ",
-            value: data.genres.toString(),
-            inline: false,
-          });
-          // Set the color of the embed
-          MALembed.setColor("8a2be2");
-          // Set the main content of the embed
-
-          //.setImage(``);
-          // console.log(rand);
-          msg.channel.send(MALembed);
-        })
-        .catch((err) => console.log(err));
-    }
-   
-    // for(var i in insults){
-    //   if(msg.content.toLocaleLowerCase().includes(insults[i].toLowerCase())) foundInText = true;
-    // }
-    // //si il en contient une j'envoie un message réponse
-    // if(foundInText){
-    //   const emoji = client.emojis.cache.find(
-    //     (emoji) => emoji.name === "kuso_cat"
-    //   );
-    //   //je donne une valeur aléatoire comprise entre 0 et la longueur totale du tableau repliesSentences
-    //   let index = ~~(Math.random() * repliesSentences.length);
-    //   let sentence = repliesSentences[index];
-    //   //si l'index contient un emoji
-    //   if(index == 5 ){
-    //     msg.reply(`${sentence}`);
-    //   }else{
-    //     msg.reply(`${sentence} ${emoji}`);
-    //   }
-    // }
-    let clachouxRefFoundInText = false;
     // let adminRole = msg.guild.roles.cache.find(r => r. id === "771793902331232280");
     // if (msg.content.startsWith(`${prefix.prefix}addsw `) && msg.member.roles.cache.some(role => role.name === 'team clachoufoufou') || msg.member.roles.cache.some(role => role.name === 'foufoufou')) {
     //   let tempMessage = msg.content;
@@ -369,65 +294,13 @@ function normalBotCommands() {
     //     }
     //   });
     // }
-      clachoux(msg);
 
-   
+    maatouTroll(msg);
+    sendTrollSWords(msg)
 
-    let maatouEnForce = false;
-    var user = msg.author.id;
-    for (var i in maatTroll) {
-      if (
-        msg.content.toLocaleLowerCase().includes(maatTroll[i].toLowerCase()) &&
-        user == "623938144198197258"
-      )
-        maatouEnForce = true;
-    }
-    if (maatouEnForce) {
-      msg.react(`${emoji}`);
-    }
-    let sexWordsFoundInText = false;
-    var sexWords = fs.readFileSync("sexWords.txt").toString().split("\n");
-    for (word of sexWords) {
-      if (msg.content.toLocaleLowerCase().includes(word.toLowerCase()))
-        sexWordsFoundInText = true;
-    }
-    if (sexWordsFoundInText) {
-      msg.reply(`Coquin (ne) ${emoji}`);
-    }
-    if (commands.find((r) => r.name.includes(firstword[0]))) {
-    } else {
-    }
-    if (msg.content == `${prefix.prefix}help`) {
-      const helpEmbed = new MessageEmbed();
-      // Set the title of the field
-      helpEmbed.setTitle(`Commandes du Bot`);
 
-      helpEmbed.setThumbnail("https://i.ibb.co/njxVf93/Clachoufoufou.webp");
-      for (command of commands) {
-        let nameWithText = "";
-        if (command.nameWithText != "none") {
-          nameWithText = " " + command.nameWithText;
-        }
-        helpEmbed.addFields({
-          name: prefix.prefix + command.name + nameWithText,
-          value: command.description,
-          inline: false,
-        });
-      }
-      // Set the color of the embed
-      helpEmbed.setColor("8a2be2");
-      // Set the main content of the embed
-      helpEmbed.setDescription(``);
-
-      //.setImage(``);
-      // console.log(rand);
-      msg.channel.send(helpEmbed).catch((e) => console.log(e));
-    }
-    // if(msg.content == "test"){
-    //   const emoji = client.emojis.cache.find(
-    //     (emoji) => emoji.name === "kuso_cat"
-    //   );
-    //   msg.react(`${emoji}`);
+    // if (commands.find((r) => r.name.includes(firstword[0]))) {
+    // } else {
     // }
   }
 }
@@ -469,12 +342,30 @@ function configFileGenerator() {
   }
 }
 
-function clachoux(msg){
-  
+function clachoux(msg) {
   for (var clachoux of clachouxRef) {
     if (msg.content.toLowerCase().includes(clachoux.name.toLowerCase())) {
       msg.react(`${getKusoCatEmoji()}`);
       break;
     }
+  }
+}
+function maatouTroll(msg) {
+  var user = msg.author.id;
+  for (var i in maatTroll) {
+    if (
+      msg.content.toLocaleLowerCase().includes(maatTroll[i].toLowerCase()) &&
+      user == "374867949330104321"
+    )
+      msg.react(`${emoji}`);
+  }
+}
+function sendTrollSWords(msg) {
+  let emoji = getKusoCatEmoji();
+  var sexWords = fs.readFileSync("sexWords.txt").toString().split("\n");
+
+  for (word of sexWords) {
+    if (msg.content.toLocaleLowerCase().includes(word.toLowerCase()))
+      msg.reply(`Coquin (ne) ${emoji}`);
   }
 }
