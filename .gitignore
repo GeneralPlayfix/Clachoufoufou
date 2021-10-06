@@ -1,2 +1,9 @@
 node_modules
 json/token.json
+package-lock.json
+package.json
+buddy-screenshot.png
+.gitignore
+.gitattributes
+save.js
+save1.1.js
