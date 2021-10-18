@@ -74,4 +74,11 @@ async function getAnime(msg) {
       );
   }
 }
-module.exports = { getAnime };
+function onCommand(msg, allCommandInformations){
+  var path = require('path');
+  var scriptName = path.basename(__filename).replace(".js","");
+  if(scriptName == allCommandInformations[0]){
+      console.log("C'est moi");
+  }
+}
+module.exports = { getAnime, onCommand };

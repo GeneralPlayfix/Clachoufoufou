@@ -1,0 +1,9 @@
+[
+    { "id": "557664646753157130", "name":"Clachoux", "superAdmin":"true"},
+    { "id": "623938144198197258", "name":"Maat", "superAdmin":"true"},
+    { "id": "417939553236811776", "name":"OeilDeNuit", "superAdmin":"true"},
+    { "id": "374867949330104321", "name":"GeneralPlayfix", "superAdmin":"true"},
+    { "id": "422810577682038785", "name":"Aigles_Fly", "superAdmin":"false"},
+    { "id": "219565410859745280", "name":"Julo", "superAdmin":"false"},
+    { "id": "340227654366003221", "name":"Hunsker", "superAdmin":"false"}
+]

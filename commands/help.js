@@ -18,8 +18,13 @@ function generateHelpEmbed(msg, commands) {
       if (command.nameWithText != "none") {
         nameWithText = " " + command.nameWithText;
       }
+      if(command.prefix == true){
+        var name = prefix.prefix + command.name + nameWithText;
+      }else{
+        var name = command.name + nameWithText;
+      }
       helpEmbed.addFields({
-        name: prefix.prefix + command.name + nameWithText,
+        name: name,
         value: command.description,
         inline: false,
       });
@@ -34,5 +39,11 @@ function generateHelpEmbed(msg, commands) {
     msg.channel.send(helpEmbed).catch((e) => console.log(e));
   }
 }
-
-module.exports = { generateHelpEmbed };
+function onCommand(msg, allCommandInformations){
+  var path = require('path');
+  var scriptName = path.basename(__filename).replace(".js","");
+  if(scriptName == allCommandInformations[0]){
+      console.log("C'est moi");
+  }
+}
+module.exports = { generateHelpEmbed, onCommand };

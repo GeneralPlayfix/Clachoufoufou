@@ -7,6 +7,8 @@ const {
 const puppeteer = require("puppeteer");
 const fs = require("fs");
 // var cron = require("node-cron");/
+const configFolder = "./config/";
+const commandsFolder = "./commands/";
 
 const client = new Client();
 
@@ -20,10 +22,9 @@ const maatTroll = ["troll", "trolltou", "flemmme", ":eyes:"];
 let arrayOfSentences = require("./json/readingSentence.json");
 
 let overallTableOfExits = [];
-
-configFileGenerator();
+var temps = 20;
+fileGenerator();
 main();
-
 function main() {
   client.login(token.token);
   client.on("ready", () => {
@@ -110,7 +111,7 @@ async function japanreadScraper() {
             .split(/[\s-]/);
           if (timerArray[1] === "s" || timer[0].innerText.includes("min")) {
             if (
-              (timerArray[1] == "min" && timerArray[0] <= 17) ||
+              (timerArray[1] == "min" && timerArray[0] <= 10) ||
               timerArray[1] == "s"
             ) {
               hugeArray.push({
@@ -178,11 +179,11 @@ async function japanreadScraper() {
     // console.log(overallTableOfExits);
     setTimeout(generateEmbedForMangas, 0);
   } else {
-    // console.log("Pas de nouveauté de la team clachoufoufou");
+    console.log("Pas de nouveauté de la team clachoufoufou");
   }
   await browser.close();
   // setTimeout(infoSiteWeb, 15 * 60 * 1000);
-  setTimeout(japanreadScraper, 1 * 60 * 1000);
+  setTimeout(japanreadScraper, 2 * 60 * 1000);
 }
 
 async function generateEmbedForMangas() {
@@ -245,63 +246,23 @@ function normalBotCommands() {
   // setTimeout(() => {
   // message("botNormal")
   // }, 0);
-
-  const repliesSentences = [
-    "Tu ne devrais pas insulter les gens",
-    "Tu ne dois pas insulter les gens",
-    "C'est pas bien d'insulter quelqu'un",
-    "C'est pas bien d'insulter les gens",
-    "Il ne faut pas insulter les gens",
-    "Méchant :rage: ",
-  ];
-
   client.on("message", gotMessage);
 
   function gotMessage(msg) {
-    // let foundInText = false;
-    // //je vérifie si le message contient une insulte
-
-    let firstword = msg.content.split(" ");
+    callAllModules(msg);
     let anime = require("./commands/anime");
     anime.getAnime(msg);
+
+    // let clear = require("./commands/clear");
+    // clear.clear(msg);
+
     let help = require("./commands/help");
     help.generateHelpEmbed(msg, commands);
     clachoux(msg);
-
-    // let adminRole = msg.guild.roles.cache.find(r => r. id === "771793902331232280");
-    // if (msg.content.startsWith(`${prefix.prefix}addsw `) && msg.member.roles.cache.some(role => role.name === 'team clachoufoufou') || msg.member.roles.cache.some(role => role.name === 'foufoufou')) {
-    //   let tempMessage = msg.content;
-    //   // console.log(commands[0].name.length);
-    //   let message = tempMessage.substring(commands[0].name.length+4, tempMessage.length);
-    //   var words = [];
-    //   fs.readFile("sexWords.txt", "utf8", function (err, data) {
-    //     if (err) throw err;
-    //     // console.log(data)
-    //     // console.log(data);
-    //     words = data;
-    //     // console.log("Les mots");
-    //     // console.log(words);
-    //     // console.log(message);
-    //     if (words.includes(message)) {
-    //       msg.reply("Le mot existe déjà !");
-    //     }else{
-    //       fs.appendFile("sexwords.txt", '\n', function(err){});
-    //       fs.appendFile("sexWords.txt", `${message}`, function (err) {
-    //         if (err) return console.log(err);
-    //         console.log(`Mot sexuel ${message} ajouté !`);
-    //       });
-    //       msg.reply("mot ajouté !");
-    //     }
-    //   });
-    // }
-
+    let googleSearch = require("./Chachoufoufou_recherche");
+    googleSearch.Chachoufoufou_recherche(msg);
     maatouTroll(msg);
-    sendTrollSWords(msg)
-
-
-    // if (commands.find((r) => r.name.includes(firstword[0]))) {
-    // } else {
-    // }
+    sendTrollSWords(msg);
   }
 }
 
@@ -312,36 +273,61 @@ function normalBotCommands() {
 //   if (!Channel) return console.error("Couldn't find the channel.");
 //   Channel.send(message).catch((e) => console.log(e));
 // }
-
-function configFileGenerator() {
-  const configFolder = "./config/";
-  const commandsFolder = "./commands/";
+function fileGenerator() {
   const commandFile = [];
   const configFile = [];
   fs.readdirSync(commandsFolder).forEach((file) => {
-    let fileWithoutExtension = file.substring(0, file.length - 3);
+    let fileWithoutExtension = file.replace(".js", "");
+
     commandFile.push(fileWithoutExtension);
   });
   fs.readdirSync(configFolder).forEach((file) => {
-    let fileWithoutExtension = file.substring(0, file.length - 5);
+    let fileWithoutExtension = file.replace(".json", "");
     configFile.push(fileWithoutExtension);
   });
-  for (fileCommand of commandFile) {
-    //je retire l'extension du nom de fichier
-    if (configFile.indexOf(fileCommand) != -1) {
+  for (command of commands) {
+    if (configFile.indexOf(command.name) != -1) {
     } else {
       fs.appendFile(
-        `${configFolder}${fileCommand}.conf`,
-        "requireAdminPerms:false\nrequireRoles:false\nrequiredRoles:[]\nwhitelistEnabled:false\nwhitelist:[]",
+        `${configFolder}${command.name}.json`,
+        `{\n    "requireAdminPerms":false,\n    "requireRoles":false,\n    "requiredRoles":["761904239034892288", "761905362654855168", "857273472300744746"],\n    "whitelistEnabled":false,\n    "whitelist":[],\n    "blasklistEnabled":false,\n    "blacklist":[]\n}`,
         function (err) {
           if (err) throw err;
-          console.log(`Fichier ${fileCommand} créé !`);
+          console.log(`Fichier ${command.name} créé !`);
+        }
+      );
+    }
+    if (commandFile.indexOf(command.name) != -1) {
+    } else {
+      fs.appendFile(
+        `${commandsFolder}${command.name}.js`,
+`const { Client, MessageEmbed, Message, MessageAttachment, Role, RoleManager} = require("discord.js"); 
+  prefix = require("../json/prefix.json");
+
+function onCommand(msg, allCommandInformations){
+    var path = require('path');
+    var scriptName = path.basename(__filename).replace(".js","");
+    let confFile =  path.basename(__filename).replace(".js", "") + ".json";
+    let configuration = require (\`../config/\${confFile}\`);
+    if(scriptName != allCommandInformations[0]) return;
+    if(!(configuration.requireRoles == false || msg.member.roles.cache.some(r=>configuration.requiredRoles.includes(r.id)))) return;
+    if(!(configuration.whitelistEnabled == false || configuration.whitelist.includes(msg.author.id))) return;
+    if(!(configuration.blacklistEnabled== false || !(configuration.blacklist.includes(msg.author.id)))) return;
+    executeCommand(msg, allCommandInformations[1]); 
+}
+function executeCommand(msg, commandArguments){
+  
+}
+
+module.exports = {onCommand}`,
+        function (err) {
+          if (err) throw err;
+          console.log(`Fichier ${command.name} créé !`);
         }
       );
     }
   }
 }
-
 function clachoux(msg) {
   for (var clachoux of clachouxRef) {
     if (msg.content.toLowerCase().includes(clachoux.name.toLowerCase())) {
@@ -367,5 +353,27 @@ function sendTrollSWords(msg) {
   for (word of sexWords) {
     if (msg.content.toLocaleLowerCase().includes(word.toLowerCase()))
       msg.reply(`Coquin (ne) ${emoji}`);
+  }
+}
+
+function callAllModules(msg) {
+  if (msg.content.startsWith(prefix.prefix)) {
+    if (msg.guild.id == "748823235969286144") {
+      const trimMessage = msg.content.trim().replace(/[\s]{2,}/g, " ").replace(prefix.prefix, ""); //supp les doubles/tripes espaces ainsi que les espaces inutiles au début et fin de chaine
+      const args = trimMessage.split(" ").slice(1); // All arguments behind the command name with the prefix
+      let allCommandInformations = [trimMessage.split(" ")[0], args];
+      const commandFile = [];
+      fs.readdirSync(commandsFolder).forEach((file) => {
+        let fileWithoutExtension = file.replace(".js", "");
+        commandFile.push(fileWithoutExtension);
+      });
+      for (command of commandFile) {
+        console.log(command);
+        let commandFile = require(`./commands/${command}`);
+        commandFile.onCommand(msg, allCommandInformations);
+      }
+    }else{
+      msg.reply("Vous n'êtes pas sur un serveur autorisé")
+    }
   }
 }

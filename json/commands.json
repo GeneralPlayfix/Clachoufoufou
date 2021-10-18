@@ -2,16 +2,19 @@
     {
         "name":"help",
         "nameWithText":"none",
-        "description":"Permet d'afficher toutes les commandes existantes !"
+        "description":"Permet d'afficher toutes les commandes existantes !",
+        "prefix":true
     },
     {
         "name":"addsw",
         "nameWithText":"<mot sexuel>",
-        "description":"Il vous suffit d'écrire ceci afin d'ajouter un mot sexuel à la liste !"
+        "description":"Il vous suffit d'écrire ceci afin d'ajouter un mot sexuel à la liste !",
+        "prefix":true
     },
     {
         "name":"anime",
         "nameWithText":"<nom de l'anime>",
-        "description":"Il vous suffit d'écrire ceci afin d'avoir les informations de l'anime rentré !"
-    }    
+        "description":"Il vous suffit d'écrire ceci afin d'avoir les informations de l'anime rentré !",
+        "prefix":true
+    }
 ]
