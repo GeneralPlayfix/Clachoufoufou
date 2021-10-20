@@ -14,7 +14,6 @@ const client = new Client();
 
 const prefix = require("./json/prefix.json");
 const json = require("./json/img.json");
-const commands = require("./json/commands.json");
 const token = require("./json/token.json");
 const clachouxRef = require("./json/clachouxRef.json");
 const maatTroll = ["troll", "trolltou", "flemmme", ":eyes:"];
@@ -22,7 +21,7 @@ const maatTroll = ["troll", "trolltou", "flemmme", ":eyes:"];
 let arrayOfSentences = require("./json/readingSentence.json");
 
 let overallTableOfExits = [];
-var temps = 20;
+
 fileGenerator();
 main();
 function main() {
@@ -255,9 +254,6 @@ function normalBotCommands() {
 
     // let clear = require("./commands/clear");
     // clear.clear(msg);
-
-    let help = require("./commands/help");
-    help.generateHelpEmbed(msg, commands);
     clachoux(msg);
     let googleSearch = require("./Chachoufoufou_recherche");
     googleSearch.Chachoufoufou_recherche(msg);
@@ -274,6 +270,7 @@ function normalBotCommands() {
 //   Channel.send(message).catch((e) => console.log(e));
 // }
 function fileGenerator() {
+  const commands = require("./json/commands.json");
   const commandFile = [];
   const configFile = [];
   fs.readdirSync(commandsFolder).forEach((file) => {
@@ -290,7 +287,7 @@ function fileGenerator() {
     } else {
       fs.appendFile(
         `${configFolder}${command.name}.json`,
-        `{\n    "requireAdminPerms":false,\n    "requireRoles":false,\n    "requiredRoles":["761904239034892288", "761905362654855168", "857273472300744746"],\n    "whitelistEnabled":false,\n    "whitelist":[],\n    "blasklistEnabled":false,\n    "blacklist":[]\n}`,
+        `{\n "module":true,\n    "requireAdminPerms":false,\n    "requireRoles":false,\n    "requiredRoles":["761904239034892288", "761905362654855168", "857273472300744746"],\n    "whitelistEnabled":false,\n    "whitelist":[],\n    "blasklistEnabled":false,\n    "blacklist":[]\n}`,
         function (err) {
           if (err) throw err;
           console.log(`Fichier ${command.name} créé !`);

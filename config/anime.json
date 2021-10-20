@@ -1,4 +1,5 @@
 {
+    "module":true,
     "requireAdminPerms":false,
     "requireRoles":false,
     "requiredRoles":["761904239034892288", "761905362654855168", "857273472300744746"],

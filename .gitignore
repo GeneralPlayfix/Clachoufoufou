@@ -5,5 +5,6 @@ package.json
 buddy-screenshot.png
 .gitignore
 .gitattributes
-
+save.js
 save1.1.js
+sexWords.txt
