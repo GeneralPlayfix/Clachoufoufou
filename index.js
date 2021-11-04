@@ -28,7 +28,6 @@ function main() {
   client.login(token.token);
   client.on("ready", () => {
     console.log(`${client.user.tag} is online!`);
-
     setTimeout(japanreadScraper, 0);
     setTimeout(normalBotCommands, 0);
     // setTimeout(test, 150);
@@ -110,7 +109,7 @@ async function japanreadScraper() {
             .split(/[\s-]/);
           if (timerArray[1] === "s" || timer[0].innerText.includes("min")) {
             if (
-              (timerArray[1] == "min" && timerArray[0] <= 10) ||
+              (timerArray[1] == "min" && timerArray[0] <= 14) ||
               timerArray[1] == "s"
             ) {
               hugeArray.push({
@@ -249,8 +248,6 @@ function normalBotCommands() {
 
   function gotMessage(msg) {
     callAllModules(msg);
-    let anime = require("./commands/anime");
-    anime.getAnime(msg);
 
     // let clear = require("./commands/clear");
     // clear.clear(msg);
@@ -258,7 +255,7 @@ function normalBotCommands() {
     let googleSearch = require("./Chachoufoufou_recherche");
     googleSearch.Chachoufoufou_recherche(msg);
     maatouTroll(msg);
-    sendTrollSWords(msg);
+    // sendTrollSWords(msg);
   }
 }
 
@@ -287,7 +284,7 @@ function fileGenerator() {
     } else {
       fs.appendFile(
         `${configFolder}${command.name}.json`,
-        `{\n "module":true,\n    "requireAdminPerms":false,\n    "requireRoles":false,\n    "requiredRoles":["761904239034892288", "761905362654855168", "857273472300744746"],\n    "whitelistEnabled":false,\n    "whitelist":[],\n    "blasklistEnabled":false,\n    "blacklist":[]\n}`,
+        `{\n   "module":true,\n    "requireAdminPerms":false,\n    "requireRoles":false,\n    "requiredRoles":["761904239034892288", "761905362654855168", "857273472300744746"],\n    "whitelistEnabled":false,\n    "whitelist":[],\n    "blasklistEnabled":false,\n    "blacklist":[]\n}`,
         function (err) {
           if (err) throw err;
           console.log(`Fichier ${command.name} créé !`);
@@ -302,20 +299,21 @@ function fileGenerator() {
   prefix = require("../json/prefix.json");
 
 function onCommand(msg, allCommandInformations){
-    var path = require('path');
-    var scriptName = path.basename(__filename).replace(".js","");
-    let confFile =  path.basename(__filename).replace(".js", "") + ".json";
-    let configuration = require (\`../config/\${confFile}\`);
-    if(scriptName != allCommandInformations[0]) return;
-    if(!(configuration.requireRoles == false || msg.member.roles.cache.some(r=>configuration.requiredRoles.includes(r.id)))) return;
-    if(!(configuration.whitelistEnabled == false || configuration.whitelist.includes(msg.author.id))) return;
-    if(!(configuration.blacklistEnabled== false || !(configuration.blacklist.includes(msg.author.id)))) return;
+  var path = require("path");
+  var scriptName = path.basename(__filename).replace(".js", "");
+  let confFile = path.basename(__filename).replace(".js", "") + ".json";
+  delete require.cache[require.resolve(\`../config/\${confFile}\`)]
+  let configuration = require(\`../config/\${confFile}\`);
+  if (scriptName != allCommandInformations[0]) return;
+  if (!(configuration.module == true)) return;
+  if (!(configuration.requireRoles == true || msg.member.roles.cache.some((r) => configuration.requiredRoles.includes(r.id)))) return;
+  if (!(configuration.whitelistEnabled == false || configuration.whitelist.includes(msg.author.id))) return;
+  if (!(configuration.blacklistEnabled == false || !configuration.blacklist.includes(msg.author.id))) return;
     executeCommand(msg, allCommandInformations[1]); 
 }
 function executeCommand(msg, commandArguments){
   
 }
-
 module.exports = {onCommand}`,
         function (err) {
           if (err) throw err;
@@ -343,15 +341,15 @@ function maatouTroll(msg) {
       msg.react(`${emoji}`);
   }
 }
-function sendTrollSWords(msg) {
-  let emoji = getKusoCatEmoji();
-  var sexWords = fs.readFileSync("sexWords.txt").toString().split("\n");
+// function sendTrollSWords(msg) {
+//   let emoji = getKusoCatEmoji();
+//   var sexWords = fs.readFileSync("sexWords.txt").toString().split("\n");
 
-  for (word of sexWords) {
-    if (msg.content.toLocaleLowerCase().includes(word.toLowerCase()))
-      msg.reply(`Coquin (ne) ${emoji}`);
-  }
-}
+//   for (word of sexWords) {
+//     if (msg.content.toLocaleLowerCase().includes(word.toLowerCase()))
+//       msg.reply(`Coquin (ne) ${emoji}`);
+//   }
+// }
 
 function callAllModules(msg) {
   if (msg.content.startsWith(prefix.prefix)) {
@@ -365,7 +363,7 @@ function callAllModules(msg) {
         commandFile.push(fileWithoutExtension);
       });
       for (command of commandFile) {
-        console.log(command);
+        // console.log(command);
         let commandFile = require(`./commands/${command}`);
         commandFile.onCommand(msg, allCommandInformations);
       }

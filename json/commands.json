@@ -15,8 +15,19 @@
         "description":"Il vous suffit d'écrire ceci afin d'avoir les informations de l'anime rentré !"
     },
     {
+        "name":"manga",
+        "nameWithText":"<nom du manga>",
+        "description":"Il vous suffit d'écrire ceci afin d'avoir les informations du manga !"
+    
+    },
+    {
         "name":"clear",
         "nameWithText":"<nombre> ou <ping> <nombre>",
         "description":"Commande qui permet de supprimer un certain nombre de message"
+    },
+    {
+        "name":"module",
+        "nameWithText":"<list> ou <nom> config ou <nom> activity",
+        "description":"TO DO"
     }
 ]
