@@ -8,14 +8,23 @@ function onCommand(msg, allCommandInformations) {
   var path = require("path");
   var scriptName = path.basename(__filename).replace(".js", "");
   let confFile = path.basename(__filename).replace(".js", "") + ".json";
-  delete require.cache[require.resolve(`../config/${confFile}`)]
+  delete require.cache[require.resolve(`../config/${confFile}`)];
   let configuration = require(`../config/${confFile}`);
   if (scriptName != allCommandInformations[0]) return;
-  if (!(configuration.module == true)) return;
-  if (!(configuration.requireRoles == true || msg.member.roles.cache.some((r) => configuration.requiredRoles.includes(r.id)))) return;
-  if (!(configuration.whitelistEnabled == false || configuration.whitelist.includes(msg.author.id))) return;
-  if (!(configuration.blacklistEnabled == false || !configuration.blacklist.includes(msg.author.id))) return;
-  executeCommand(msg, allCommandInformations[1]);
+  if (!configuration.module) return;
+  if (configuration.requireRoles) {
+    let findRole = false;
+    for (let messages of msg.member.roles.cache) {
+      if (configuration.requiredRoles.includes(messages[0])){
+        findRole = true;
+        break;
+      }
+    }
+    if (!findRole) return;
+  }
+  if (!(!configuration.whitelistEnabled || configuration.whitelist.includes(msg.author.id))) return;
+  if (!(!configuration.blacklistEnabled || !configuration.blacklist.includes(msg.author.id))) return;
+  executeCommand(msg, allCommandInformations[1]); 
 }
 function executeCommand(msg, commandArguments) {
   if (commandArguments.length == 0) return;

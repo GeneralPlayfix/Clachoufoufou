@@ -1,10 +1,13 @@
 {
-    "module":true,
-    "requireAdminPerms":false,
-    "requireRoles":true,
-    "requiredRoles":["771793902331232280"],
-    "whitelistEnabled":false,
-    "whitelist":[],
-    "blasklistEnabled":false,
-    "blacklist":[]
+  "module": true,
+  "requireAdminPerms": false,
+  "requireRoles": true,
+  "requiredRoles": [
+    "771793902331232280",
+    "809510973991419954"
+  ],
+  "whitelistEnabled": false,
+  "whitelist": [],
+  "blasklistEnabled": false,
+  "blacklist": []
 }

@@ -29,5 +29,9 @@
         "name":"module",
         "nameWithText":"<list> ou <nom> config ou <nom> activity",
         "description":"TO DO"
+    },{
+        "name":"troll",
+        "nameWithText":"none",
+        "description":"Le bot va te regarder de haut 👀"    
     }
 ]

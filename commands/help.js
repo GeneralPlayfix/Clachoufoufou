@@ -14,12 +14,22 @@ function onCommand(msg, allCommandInformations) {
   var path = require("path");
   var scriptName = path.basename(__filename).replace(".js", "");
   let confFile = path.basename(__filename).replace(".js", "") + ".json";
+  delete require.cache[require.resolve(`../config/${confFile}`)];
   let configuration = require(`../config/${confFile}`);
   if (scriptName != allCommandInformations[0]) return;
-  if (!(configuration.module == true)) return;
-  if (!(configuration.requireRoles == true || msg.member.roles.cache.some((r) => configuration.requiredRoles.includes(r.id)))) return;
-  if (!(configuration.whitelistEnabled == false || configuration.whitelist.includes(msg.author.id))) return;
-  if (!(configuration.blacklistEnabled == false || !configuration.blacklist.includes(msg.author.id))) return;
+  if (!configuration.module) return;
+  if (configuration.requireRoles) {
+    let findRole = false;
+    for (let messages of msg.member.roles.cache) {
+      if (configuration.requiredRoles.includes(messages[0])){
+        findRole = true;
+        break;
+      }
+    }
+    if (!findRole) return;
+  }
+  if (!(!configuration.whitelistEnabled || configuration.whitelist.includes(msg.author.id))) return;
+  if (!(!configuration.blacklistEnabled || !configuration.blacklist.includes(msg.author.id))) return;
   executeCommand(msg);
 }
 
@@ -31,19 +41,31 @@ function executeCommand(msg) {
     configFile.push(file);
   });
   for (file of configFile) {
-    delete require.cache[require.resolve(`.${configFolder}${file}`)];
+    delete require.cache[require.resolve(`../config/${file}`)];
     let data = require(`../${configFolder}${file}`);
-    if (data.module == true){
-      if (data.requireRoles == true || msg.member.roles.cache.some((r) => data.requiredRoles.includes(r.id))) {
-        if (data.whitelistEnabled == false || data.whitelist.includes(msg.author.id)) {
-          if (data.blacklistEnabled == false || !data.blacklist.includes(msg.author.id)) {
-            delete require.cache[require.resolve('../json/commands.json')]
-            const commandsFile = require("../json/commands.json");
-            let tempCommandInformation = commandsFile.find(command => { return command.name === file.replace(".json", "") });
-            commands.push(tempCommandInformation);
+    if (data.module == true) {
+      if (data.requireRoles) {
+        let findRole = false;
+        for (let messages of msg.member.roles.cache) {
+          if (data.requiredRoles.includes(messages[0])){
+            findRole = true;
+            break;
+          }
+        }
+        if (findRole){
+          if (!(data.requireRoles) || msg.member.roles.cache.some((r) => data.requiredRoles.includes(r.id))) {
+            if (!(data.whitelistEnabled) || data.whitelist.includes(msg.author.id)) {
+              if (!(data.blacklistEnabled) || !data.blacklist.includes(msg.author.id)) {
+                delete require.cache[require.resolve('../json/commands.json')]
+                const commandsFile = require("../json/commands.json");
+                let tempCommandInformation = commandsFile.find(command => { return command.name === file.replace(".json", "") });
+                commands.push(tempCommandInformation);
+              }
+            }
           }
         }
       }
+     
     }
   }
 

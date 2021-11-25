@@ -21,7 +21,6 @@ const maatTroll = ["troll", "trolltou", "flemmme", ":eyes:"];
 let arrayOfSentences = require("./json/readingSentence.json");
 
 let overallTableOfExits = [];
-
 fileGenerator();
 main();
 function main() {
@@ -47,21 +46,16 @@ async function japanreadScraper() {
   const page = await browser.newPage();
   page.setDefaultNavigationTimeout(0);
   // se faire passer pour un navigateur
-  page.setUserAgent(
-    "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0"
-  );
-  await page.goto(`https://www.japanread.cc`, {
+  page.setUserAgent("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
+  await page.goto(`https://www.japanread.cc/?page=3`, {
     waitUntil: ["load", "domcontentloaded", "networkidle0", "networkidle2"],
   }); //se rendre sur une page
   await page.screenshot({ path: "buddy-screenshot.png" });
   tempMangas = await page.evaluate(() => {
-    let tbody = document.querySelector(
-      "body > section > div > div > div.col-lg-9 > div.table-responsive > table > tbody"
-    );
+    let tbody = document.querySelector("body > section > div > div > div.col-lg-9 > div.table-responsive > table > tbody");
     let trs = [];
 
     trs = tbody.querySelectorAll("tr");
-
     let hugeArray = [];
     let title = "";
     let page = 0;
@@ -69,9 +63,7 @@ async function japanreadScraper() {
     for (tr of trs) {
       let tempTitle = "";
       if (tr.className == "manga") {
-        tempTitle = tr
-          .querySelector("tr > td  > span > a")
-          .innerText.replaceAll("\\t", "");
+        tempTitle = tr.querySelector("tr > td  > span > a").innerText.replaceAll("\\t", "");
         title = tempTitle;
         page++;
       } else {
@@ -81,12 +73,8 @@ async function japanreadScraper() {
         } catch (error) {
           test = error;
         }
-
         let timer = tr.querySelectorAll("tr > td:nth-child(7) > time");
-
-        let teams = tr.querySelectorAll(
-          "tr > td.d-none.d-sm-table-cell.text-truncate > a"
-        );
+        let teams = tr.querySelectorAll("tr > td.d-none.d-sm-table-cell.text-truncate > a");
         trueTeam = "";
         if (teams[0]?.innerText == null) {
           trueTeam = "not";
@@ -104,14 +92,9 @@ async function japanreadScraper() {
           }
         }
         if (trueTeam.includes("team clachoufoufou")) {
-          let timerArray = timer[0].innerText
-            .replace(/[\s-]+$/, "")
-            .split(/[\s-]/);
+          let timerArray = timer[0].innerText.replace(/[\s-]+$/, "").split(/[\s-]/);
           if (timerArray[1] === "s" || timer[0].innerText.includes("min")) {
-            if (
-              (timerArray[1] == "min" && timerArray[0] <= 14) ||
-              timerArray[1] == "s"
-            ) {
+            if ((timerArray[1] == "min" && timerArray[0] <= 38) || timerArray[1] == "s") {
               hugeArray.push({
                 chapTitle: title,
                 chap: chaps[0].innerText,
@@ -133,16 +116,7 @@ async function japanreadScraper() {
 
   if (tempMangas.length != 0) {
     for (manga of tempMangas) {
-      if (
-        overallTableOfExits.find(
-          (Title) => Title.chapTitle === manga.chapTitle
-        ) &&
-        overallTableOfExits.find((chap) => chap.chap === manga.chap) &&
-        overallTableOfExits.find((link) => link.chapLinks === manga.chapLinks)
-      ) {
-        // console.log("Le chap y est");
-      } else {
-        // console.log("le chap y est pas !");
+      if (!(overallTableOfExits.find((Title) => Title.chapTitle === manga.chapTitle) && overallTableOfExits.find((chap) => chap.chap === manga.chap) && overallTableOfExits.find((link) => link.chapLinks === manga.chapLinks))) {
         mangas.push({
           chapTitle: manga.chapTitle,
           chap: manga.chap,
@@ -153,17 +127,8 @@ async function japanreadScraper() {
   }
   if (mangas.length >= 1) {
     for (manga of mangas) {
-      if (
-        overallTableOfExits.find(
-          (Title) => Title.chapTitle === manga.chapTitle
-        ) &&
-        overallTableOfExits.find((chap) => chap.chap === manga.chap) &&
-        overallTableOfExits.find((link) => link.chapLinks === manga.chapLinks)
-      ) {
-        // console.log(
-        //   "Le manga existe déjà dans le tableau overallTableOfExists"
-        // );
-      } else {
+      if (!(overallTableOfExits.find((Title) => Title.chapTitle === manga.chapTitle) && overallTableOfExits.find((chap) => chap.chap === manga.chap) && overallTableOfExits.find((link) => link.chapLinks === manga.chapLinks))) {
+        //j'ajoute le manga récupéré dans le tableau qui contient tous les mangas postés
         overallTableOfExits.push({
           chapTitle: manga.chapTitle,
           chap: manga.chap,
@@ -171,16 +136,15 @@ async function japanreadScraper() {
         });
       }
     }
-    // console.log("Tableau sortie actuelle :");
-    // console.log(mangas);
-    // console.log("Tableau complet");
-    // console.log(overallTableOfExits);
+    //je crée un "thread", ou une exécution "parallèle" pour généré mon embed discord avec le/les manga(s) récupéré(s) 
     setTimeout(generateEmbedForMangas, 0);
   } else {
     console.log("Pas de nouveauté de la team clachoufoufou");
   }
+  //je ferme le navigateur
   await browser.close();
   // setTimeout(infoSiteWeb, 15 * 60 * 1000);
+  //je relance la fonction toutes les x minutes parallèllement au reste du script
   setTimeout(japanreadScraper, 2 * 60 * 1000);
 }
 
@@ -194,8 +158,6 @@ async function generateEmbedForMangas() {
   if (!Channel) return console.error("Couldn't find the channel.");
   // console.log(mangas)
   for (let i = mangas.length - 1; i >= 0; i--) {
-    // console.log(i);
-    // console.log(mangas[i]);
     let title = mangas[i].chapTitle.toLowerCase();
     let chap = mangas[i].chap.toLowerCase();
     let img = "";
@@ -222,22 +184,13 @@ async function generateEmbedForMangas() {
       role = "@" + title;
     }
     var rand = arrayOfSentences[~~(Math.random() * arrayOfSentences.length)];
-    // let titleWithoutSpaces = ;
     const embed = new MessageEmbed()
-      // Set the title of the field
       .setTitle(`${mangas[i].chapTitle}`)
-      // Set the color of the embed
       .setColor("3996CE")
-      // Set the main content of the embed
       .setDescription(`[${rand.sentence} ${chap}](${mangas[i].chapLinks})`)
-
       .setImage(`${img}`);
-    // console.log(rand);
-    Channel.send(`${role}`, embed)
-      .then((response) => response.crosspost())
-      .catch((e) => console.log(e));
+    Channel.send(`${role}`, embed).then((response) => response.crosspost()).catch((e) => console.log(e));
   }
-  // Sending "!d bump" to the channel.
 }
 
 function normalBotCommands() {
@@ -249,23 +202,12 @@ function normalBotCommands() {
   function gotMessage(msg) {
     callAllModules(msg);
 
-    // let clear = require("./commands/clear");
-    // clear.clear(msg);
     clachoux(msg);
-    let googleSearch = require("./Chachoufoufou_recherche");
+    let googleSearch = require("./Chachoufoufou_recherche.js")
     googleSearch.Chachoufoufou_recherche(msg);
-    maatouTroll(msg);
-    // sendTrollSWords(msg);
+    // maatouTroll(msg);
   }
 }
-
-// async function message(message) {
-//return;
-
-//   const Channel = client.channels.cache.get("886235045252173875");
-//   if (!Channel) return console.error("Couldn't find the channel.");
-//   Channel.send(message).catch((e) => console.log(e));
-// }
 function fileGenerator() {
   const commands = require("./json/commands.json");
   const commandFile = [];
@@ -295,7 +237,7 @@ function fileGenerator() {
     } else {
       fs.appendFile(
         `${commandsFolder}${command.name}.js`,
-`const { Client, MessageEmbed, Message, MessageAttachment, Role, RoleManager} = require("discord.js"); 
+        `const { Client, MessageEmbed, Message, MessageAttachment, Role, RoleManager} = require("discord.js"); 
   prefix = require("../json/prefix.json");
 
 function onCommand(msg, allCommandInformations){
@@ -305,12 +247,22 @@ function onCommand(msg, allCommandInformations){
   delete require.cache[require.resolve(\`../config/\${confFile}\`)]
   let configuration = require(\`../config/\${confFile}\`);
   if (scriptName != allCommandInformations[0]) return;
-  if (!(configuration.module == true)) return;
-  if (!(configuration.requireRoles == true || msg.member.roles.cache.some((r) => configuration.requiredRoles.includes(r.id)))) return;
-  if (!(configuration.whitelistEnabled == false || configuration.whitelist.includes(msg.author.id))) return;
-  if (!(configuration.blacklistEnabled == false || !configuration.blacklist.includes(msg.author.id))) return;
-    executeCommand(msg, allCommandInformations[1]); 
+  if (!configuration.module) return;
+  if (configuration.requireRoles) {
+    let findRole = false;
+    for (let messages of msg.member.roles.cache) {
+      if (configuration.requiredRoles.includes(messages[0])){
+        findRole = true;
+        break;
+      }
+    }
+    if (!findRole) return;
+  }
+  if (!(!configuration.whitelistEnabled || configuration.whitelist.includes(msg.author.id))) return;
+  if (!(!configuration.blacklistEnabled || !configuration.blacklist.includes(msg.author.id))) return;
+  executeCommand(msg, allCommandInformations[1]);
 }
+
 function executeCommand(msg, commandArguments){
   
 }
@@ -341,33 +293,26 @@ function maatouTroll(msg) {
       msg.react(`${emoji}`);
   }
 }
-// function sendTrollSWords(msg) {
-//   let emoji = getKusoCatEmoji();
-//   var sexWords = fs.readFileSync("sexWords.txt").toString().split("\n");
-
-//   for (word of sexWords) {
-//     if (msg.content.toLocaleLowerCase().includes(word.toLowerCase()))
-//       msg.reply(`Coquin (ne) ${emoji}`);
-//   }
-// }
 
 function callAllModules(msg) {
   if (msg.content.startsWith(prefix.prefix)) {
     if (msg.guild.id == "748823235969286144") {
-      const trimMessage = msg.content.trim().replace(/[\s]{2,}/g, " ").replace(prefix.prefix, ""); //supp les doubles/tripes espaces ainsi que les espaces inutiles au début et fin de chaine
-      const args = trimMessage.split(" ").slice(1); // All arguments behind the command name with the prefix
+      const trimMessage = msg.content.trim().replace(/[\s]{2,}/g, " ").replace(prefix.prefix, ""); //supp les doubles/triples espaces ainsi que les espaces inutiles au début et fin de chaine
+      const args = trimMessage.split(" ").slice(1); //je récupère tous les arguments qui sont après le nom de la commande
       let allCommandInformations = [trimMessage.split(" ")[0], args];
       const commandFile = [];
+      //je récupère tous les fichiers de la constante "commandsFolder" (chemin vers les dossiers de configuration)
       fs.readdirSync(commandsFolder).forEach((file) => {
         let fileWithoutExtension = file.replace(".js", "");
         commandFile.push(fileWithoutExtension);
       });
+      // je cycle sur tous les fichiers et j'appelle leur fonction "oncommand" qui fera le traitement (droit et action si tout est correct)
       for (command of commandFile) {
-        // console.log(command);
-        let commandFile = require(`./commands/${command}`);
+        let commandFile = require(`${commandsFolder}${command}`);
         commandFile.onCommand(msg, allCommandInformations);
       }
-    }else{
+    } else {
+      //je n'accepte que des commandes sur le serveur de la team
       msg.reply("Vous n'êtes pas sur un serveur autorisé")
     }
   }

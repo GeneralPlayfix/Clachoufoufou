@@ -1,0 +1,10 @@
+{
+   "module":true,
+    "requireAdminPerms":false,
+    "requireRoles":true,
+    "requiredRoles":["761904239034892288", "761905362654855168", "857273472300744746","809510973991419954"],
+    "whitelistEnabled":false,
+    "whitelist":[],
+    "blasklistEnabled":false,
+    "blacklist":[]
+}

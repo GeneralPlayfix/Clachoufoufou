@@ -1,23 +1,31 @@
-const { Client, MessageEmbed, Message, MessageAttachment, Role, RoleManager} = require("discord.js"); 
+const { MessageEmbed } = require("discord.js"); 
 prefix = require("../json/prefix.json");
-const malScraper = require("mal-scraper");
 const axios = require('axios');
 
-function onCommand(msg, allCommandInformations){
+function onCommand(msg, allCommandInformations) {
   var path = require("path");
   var scriptName = path.basename(__filename).replace(".js", "");
   let confFile = path.basename(__filename).replace(".js", "") + ".json";
+  delete require.cache[require.resolve(`../config/${confFile}`)];
   let configuration = require(`../config/${confFile}`);
   if (scriptName != allCommandInformations[0]) return;
-  if (!(configuration.module == true)) return;
-  if (!(configuration.requireRoles == true || msg.member.roles.cache.some((r) => configuration.requiredRoles.includes(r.id)))) return;
-  if (!(configuration.whitelistEnabled == false || configuration.whitelist.includes(msg.author.id))) return;
-  if (!(configuration.blacklistEnabled == false || !configuration.blacklist.includes(msg.author.id))) return;
-    executeCommand(msg, allCommandInformations[1]); 
+  if (!configuration.module) return;
+  if (configuration.requireRoles) {
+    let findRole = false;
+    for (let messages of msg.member.roles.cache) {
+      if (configuration.requiredRoles.includes(messages[0])){
+        findRole = true;
+        break;
+      }
+    }
+    if (!findRole) return;
+  }
+  if (!(!configuration.whitelistEnabled || configuration.whitelist.includes(msg.author.id))) return;
+  if (!(!configuration.blacklistEnabled || !configuration.blacklist.includes(msg.author.id))) return;
+  executeCommand(msg, allCommandInformations[1]); 
 }
 async function executeCommand(msg, commandArguments){
   if (commandArguments.length == 0) return;
-  //https://api.mangadex.org/manga?title=Overlord
   const waitEmbed = new MessageEmbed();
   waitEmbed.setTitle("Chargement...");
   waitEmbed.setImage("https://www.gif-maniac.com/gifs/54/54389.gif");
@@ -76,7 +84,10 @@ async function executeCommand(msg, commandArguments){
     })
   })
   .catch(error => {
-    console.log(error);
+    console.log("Il y a une erreur");
+    msg.reply("Manga non trouvé")
+    waitMsg.delete();
+    mangaState = false;
   });
   if(mangaState == true){
     let formatedUrl = `https://api.mangadex.org/cover/${manga[0].cover}`
@@ -85,7 +96,8 @@ async function executeCommand(msg, commandArguments){
     .then(response => {
       imgCode = response.data.data.attributes.fileName;
     });
-    if(imgCode == undefined) reply("Erreur : cover introuvable");
+
+    if(imgCode == undefined) msg.reply("Erreur : cover introuvable");
     let imgLink = `https://uploads.mangadex.org/covers/${manga[0].id}/${imgCode}`
     manga[0].cover = imgLink;
     const mangaEmbed = new MessageEmbed();
@@ -114,10 +126,8 @@ async function executeCommand(msg, commandArguments){
     if(manga[0].originalLanguage != ""){
       mangaEmbed.addField('🏳 Langue d\'origine :',`${manga[0].originalLanguage}`, true) 
     }
-    //.setDescription(`Synopsis : \n ${manga[0].description}`);
     msg.channel.send(mangaEmbed);
     waitMsg.delete();
-
   }else{
     msg.reply("Manga non trouvé")
     waitMsg.delete();

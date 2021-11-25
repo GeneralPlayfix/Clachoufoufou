@@ -1,10 +1,14 @@
 {
-    "module":false,
-    "requireAdminPerms":false,
-    "requireRoles":false,
-    "requiredRoles":["761904239034892288", "761905362654855168", "857273472300744746"],
-    "whitelistEnabled":false,
-    "whitelist":[],
-    "blasklistEnabled":false,
-    "blacklist":[]
+  "module": true,
+  "requireAdminPerms": false,
+  "requireRoles": true,
+  "requiredRoles": [
+    "761904239034892288",
+    "761905362654855168",
+    "857273472300744746"
+  ],
+  "whitelistEnabled": false,
+  "whitelist": [],
+  "blasklistEnabled": false,
+  "blacklist": []
 }

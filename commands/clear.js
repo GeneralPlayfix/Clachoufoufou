@@ -1,50 +1,86 @@
-const { Client, MessageEmbed, Message, MessageAttachment, } = require("discord.js"); 
-const prefix = require("../json/prefix.json");
-async function clear(msg){
-    if(msg.content.includes(`${prefix.prefix}clear`)){
+const { Client, MessageEmbed, Message, MessageAttachment, Role, RoleManager } = require("discord.js");
+prefix = require("../json/prefix.json");
 
-        const trimMessage = msg.content.trim().replace(/[\s]{2,}/g," ");//supp les doubles/tripes espaces ainsi que les espaces inutiles au début et fin de chaine
-        const args = trimMessage.split(' ').slice(1); // All arguments behind the command name with the prefix
-        msg.delete();
-        if(args.length == 1){
-            let amount = args.join(' '); // Amount of messages which should be deleted
-            if (isNaN(amount)) return msg.reply('The amount parameter isn`t a number!'); // Checks if the `amount` parameter is a number. If not, the command throws an error
-            
-            if (amount > 100) return msg.reply('You can`t delete more than 100 messages at once!'); // Checks if the `amount` integer is bigger than 100
-            if (amount < 1) return msg.reply('You have to delete at least 1 message!'); // Checks if the `amount` integer is smaller than 1
-            await msg.channel.messages.fetch({ limit: amount }).then(messages => { // Fetches the messages
-                msg.channel.bulkDelete(messages // Bulk deletes all messages that have been fetched and are not older than 14 days (due to the Discord API)
-            )});
-        }else if(args.length == 2){
-            let user = args[0].substr(3);
-            let amount = args[1];
-            user = user.substring(0, user.length - 1);
-            if (isNaN(amount)) return msg.reply('Vous devez spécifier un nombre de message à supprimer (pas autre chose)');
-            
-            msg.channel.messages.fetch({
-                limit: 100// Change `100` to however many messages you want to fetch
-            }).then((messages) => { 
-                const botMessages = [];
-                messages.filter(m => m.author.id === user).forEach(msg => botMessages.push(msg))
-                msg.channel.bulkDelete(botMessages).then(() => {
-                    msg.channel.send(`${amount} message(s) supprimé(s)`).then(msg => msg.delete({
-                        timeout: 3000
-                    }))
-                    
-                    
-                
-                });
-            })
-        }else if(args.length > 2 ){
-            msg.reply("Vous ne pouvez pas mettre plus de 2 paramètres à cette fonctionnalité !")
-        }else{
-            msg.reply("Vous devez au minimum spécifier le nombre de message à supprimer pour utiliser cette fonctionnalité !")
-        }
+function onCommand(msg, allCommandInformations) {
+  var path = require("path");
+  var scriptName = path.basename(__filename).replace(".js", "");
+  let confFile = path.basename(__filename).replace(".js", "") + ".json";
+  delete require.cache[require.resolve(`../config/${confFile}`)];
+  let configuration = require(`../config/${confFile}`);
+  if (scriptName != allCommandInformations[0]) return;
+  if (!configuration.module) return;
+  if (configuration.requireRoles) {
+    let findRole = false;
+    for (let messages of msg.member.roles.cache) {
+      if (configuration.requiredRoles.includes(messages[0])) {
+        findRole = true;
+        break;
+      }
     }
-   
+    if (!findRole) return;
+  }
+  if (!(!configuration.whitelistEnabled || configuration.whitelist.includes(msg.author.id))) return;
+  if (!(!configuration.blacklistEnabled || !configuration.blacklist.includes(msg.author.id))) return;
+  executeCommand(msg, allCommandInformations[1]);
+}
+async function executeCommand(msg, commandArguments) {
+  if (commandArguments.length == 0) return;
+
+  if (isNaN(commandArguments[0])) return;
+
+  let nbOfMessage = commandArguments[0];
+
+  if (nbOfMessage >= 100) {
+    msg.reply("Vous ne pouvez pas supprimer plus de 100 messages à la fois");
+  }
+
+  if (commandArguments.length == 1) {
+    clearMessages(nbOfMessage, msg);
+  }
+
+  let userId = "";
+
+  if (commandArguments.length == 2) {
+    userId = commandArguments[1].replace("<@!", "").replace('>', "")
+    clearMessagesByName(userId, nbOfMessage, msg)
+  }
 }
 
-function onCommand(msg, allCommandInformations){
 
+
+
+async function clearMessages(nbMessage, msg) {
+  nbMessage++;
+  await msg.channel.messages.fetch({ limit: nbMessage }).then(messages => {
+    try { msg.channel.bulkDelete(messages) } catch (error) { }
+  });
 }
-module.exports = { clear, onCommand };
+
+async function clearMessagesByName(userId, nbMessage, msg) {
+  msg.reply("Déso bébé, la commande n'est pas entièrement dev, faudra attendre https://tenor.com/view/dog-doggo-window-goofy-silly-gif-17699758")
+  // msg.channel.messages.fetch({
+  //   limit: 5// Change `100` to however many messages you want to fetch
+  // }).then((messages) => {
+  //   const botMessages = [];
+  //   messages.filter(m => m.author.id === userId).forEach(msg => botMessages.push(msg))
+  //   let userMessage = []; 
+  //   console.log(botMessages.length);
+  //   if(botMessages.length > nbMessage){
+  //     for(let i = 0; i <= nbMessage; i++){
+  //       userMessage.push(botMessages[i]);
+  //     }
+  //   }else{
+  //     userMessage = botMessages;
+  //   }
+
+  //   console.log(userMessage.length)
+  //   // msg.channel.bulkDelete(userMessage).then(() => {
+  //   //   msg.channel.send(`${nbMessage} message(s) supprimé(s)`).then(msg => msg.delete({
+  //   //     timeout: 3000
+  //   //   }))
+  //   // });
+  // })
+}
+
+
+module.exports = { onCommand }
