@@ -109,7 +109,7 @@ function subCommandConfig(moduleName, msg){
   let moduleConfiguration = "";      
   for(let param in config){
     let active;
-    if(config[param] == true){
+    if(config[param] == true){ 
       active = "✅";
     }else if(config[param] == false){
       active = "❌";

@@ -7,11 +7,11 @@ const {
 const puppeteer = require("puppeteer");
 const fs = require("fs");
 // var cron = require("node-cron");/
-const configFolder = "./config/";
-const commandsFolder = "./commands/";
 
 const client = new Client();
 
+const configFolder = "./config/";
+const commandsFolder = "./commands/";
 const prefix = require("./json/prefix.json");
 const json = require("./json/img.json");
 const token = require("./json/token.json");
@@ -47,10 +47,10 @@ async function japanreadScraper() {
   page.setDefaultNavigationTimeout(0);
   // se faire passer pour un navigateur
   page.setUserAgent("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
-  await page.goto(`https://www.japanread.cc/?page=3`, {
+  await page.goto(`https://www.japanread.cc`, {
     waitUntil: ["load", "domcontentloaded", "networkidle0", "networkidle2"],
   }); //se rendre sur une page
-  await page.screenshot({ path: "buddy-screenshot.png" });
+  // await page.screenshot({ path: "buddy-screenshot.png" });
   tempMangas = await page.evaluate(() => {
     let tbody = document.querySelector("body > section > div > div > div.col-lg-9 > div.table-responsive > table > tbody");
     let trs = [];
@@ -93,8 +93,8 @@ async function japanreadScraper() {
         }
         if (trueTeam.includes("team clachoufoufou")) {
           let timerArray = timer[0].innerText.replace(/[\s-]+$/, "").split(/[\s-]/);
-          if (timerArray[1] === "s" || timer[0].innerText.includes("min")) {
-            if ((timerArray[1] == "min" && timerArray[0] <= 38) || timerArray[1] == "s") {
+          if (timerArray[1] === "h" || timer[0].innerText.includes("min")) {
+            if ((timerArray[1] == "min" && timerArray[0] <= 45) || timerArray[1] == "h") {
               hugeArray.push({
                 chapTitle: title,
                 chap: chaps[0].innerText,
@@ -296,7 +296,7 @@ function maatouTroll(msg) {
 
 function callAllModules(msg) {
   if (msg.content.startsWith(prefix.prefix)) {
-    if (msg.guild.id == "748823235969286144") {
+    if (!msg.guild.id == "748823235969286144") { msg.reply("Vous n'êtes pas sur un serveur autorisé"); return;}
       const trimMessage = msg.content.trim().replace(/[\s]{2,}/g, " ").replace(prefix.prefix, ""); //supp les doubles/triples espaces ainsi que les espaces inutiles au début et fin de chaine
       const args = trimMessage.split(" ").slice(1); //je récupère tous les arguments qui sont après le nom de la commande
       let allCommandInformations = [trimMessage.split(" ")[0], args];
@@ -308,12 +308,12 @@ function callAllModules(msg) {
       });
       // je cycle sur tous les fichiers et j'appelle leur fonction "oncommand" qui fera le traitement (droit et action si tout est correct)
       for (command of commandFile) {
+        delete require.cache[require.resolve(`${commandsFolder}${command}`)];
         let commandFile = require(`${commandsFolder}${command}`);
         commandFile.onCommand(msg, allCommandInformations);
       }
-    } else {
+    
       //je n'accepte que des commandes sur le serveur de la team
-      msg.reply("Vous n'êtes pas sur un serveur autorisé")
-    }
+    
   }
 }
