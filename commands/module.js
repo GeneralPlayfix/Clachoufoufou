@@ -168,4 +168,4 @@ function jsonReader(filePath, cb){
   })
 }
 
-module.exports = { onCommand }
+module.exports = { onCommand, jsonReader }

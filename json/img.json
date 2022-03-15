@@ -1,248 +1,327 @@
-[ 
-    {
-        "name":"2.5 Dimensional Seduction" ,
-        "img":"https://i.ibb.co/JxyXKWq/2-5-Dimensional-Seduction.jpg",
-        "role":"2.5 dimensional seduction"
-    },{
-        "name": "A Happy Couple",
-        "img":"https://i.ibb.co/xS6HzYw/A-Happy-Couple.jpg",
-        "role":"a happy couple"
-    },{
-        "name":"A Warrior Exiled by the Hero and His Lover" ,
-        "img":"https://i.ibb.co/2KYhbQt/A-Warrior-Exiled-by-the-Hero-and-His-Lover.jpg",
-        "role":"a warrior exiled by the hero and his lover"
-    },{
-        "name": "Amano Megumi wa Suki Darake!",
-        "img":"https://i.ibb.co/bWVskgM/Amano-Megumi-wa-Suki-Darake.jpg",
-        "role":"amano megumi wa suki darake!"
-    },{
-        "name":"An Active Hunter in Hokkaido Has Been Thrown into a Different World" ,
-        "img":"https://i.ibb.co/TWS5Zs9/An-Active-Hunter-in-Hokkaido-Has-Been-Thrown-into-a-Different-World.jpg",
-        "role":"different world hunting with an elf wife"
-    },{
-        "name": "Ano Oni Kyoushi ga Boku no Ane ni Narun desu ka?",
-        "img":"https://i.ibb.co/2dnzmkD/Ano-Oni-Kyoushi-ga-Boku-no-Ane-ni-Narun-desu-ka.jpg",
-        "role":"ano oni kyoushi"
-    },{
-        "name":"Bijin Onna Joushi Takizawa-san" ,
-        "img":"https://i.ibb.co/1QK6LYz/Bijin-Onna-Joushi-Takizawa-san.jpg",
-        "role":"bijin onna joushi takizawa-san"
-    },{
-        "name": "Boku no kanojo sensei",
-        "img":"https://i.ibb.co/JrBxSw6/Boku-no-kanojo-sensei.jpg",
-        "role":"boku no kanojo sensei"
-    },{
-        "name":"Choppiri Toshiue Demo Kanojo ni Shite Kuremasu ka?" ,
-        "img":"https://i.ibb.co/D8FJNHG/Choppiri-Toshiue-Demo-Kanojo-ni-Shite-Kuremasu-ka.jpg",
-        "role":"choppiri toshiue demo kanojo ni shite kuremasu ka?"
-    },{
-        "name": "Danchigai",
-        "img":"https://i.ibb.co/59fC3SC/Danchigai.jpg",
-        "role":"danchigai"
-    },{
-        "name":"Do Chokkyuu Kareshi x Kanojo" ,
-        "img":"https://i.ibb.co/1T76YPb/Do-Chokkyuu-Kareshi-x-Kanojo.jpg",
-        "role":"do chokkyuu kareshi x kanojo"
-    },{
-        "name": "Doctor’s Rebirth",
-        "img":"https://i.ibb.co/PgfXF9y/Doctor-s-Rebirth.jpg",
-        "role":"doctor's rebirth"
-    },{
-        "name":"English XX Sensei" ,
-        "img":"https://i.ibb.co/zhRRnLf/English-XX-Sensei.jpg",
-        "role":"english xx sensei"
-    },{
-        "name": "gamers !",
-        "img":"https://i.ibb.co/CJVr67B/gamers.jpg",
-        "role":"gamers"
-    },{
-        "name":"Hell Mode - Yarikomi Suki no Gamer wa Hai Settei no Isekai de Musou Suru" ,
-        "img":"https://i.ibb.co/YNwcPbm/Hell-Mode-Yarikomi-Suki-no-Gamer-wa-Hai-Settei-no-Isekai-de-Musou-Suru.jpg",
-        "role":"hell mode"
-    },{
-        "name": "Hiota no Kanojo ga Ore no Motteru Eroge ni Kyoumi Shinshin Nanda ga.....",
-        "img":"https://i.ibb.co/vLmYGJY/Hiota-no-Kanojo-ga-Ore-no-Motteru-Eroge-ni-Kyoumi-Shinshin-Nanda-ga.jpg",
-        "role":"hiota no kanojo ga ore no motteru eroge ni kyoumi shinshin nanda ga"
-    },{
-        "name":"Ie Ga Moete Jinsei Dou Demo Yoku Natta Kara, Nokotta Nakenashi No Kin De Dark Elf No Dorei O Katta" ,
-        "img":"https://i.ibb.co/pRHRJVs/Ie-Ga-Moete-Jinsei-Dou-Demo-Yoku-Natta-Kara-Nokotta-Nakenashi-No-Kin-De-Dark-Elf-No-Dorei-O-Katta.jpg",
-        "role":"ie ga moete jinsei dou demo yoku natta kara, nokotta nakenashi no kin de dark elf no dorei o katta"
-    },{
-        "name": "Inumimi",
-        "img":"https://i.ibb.co/PN9dQKY/Inumimi.jpg",
-        "role":"inumimi"
-    },{
-        "name":"Isuca" ,
-        "img":"https://i.ibb.co/2nqkMG6/Isuca.jpg",
-        "role":"isuca"
-    },{
-        "name": "Itsudemo Jitaku Ni Kaerareru Ore Wa, Isekai De Gyoushounin O Hajimemashita",
-        "img":"https://i.ibb.co/Bnv6Vcv/Itsudemo-Jitaku-Ni-Kaerareru-Ore-Wa-Isekai-De-Gyoushounin-O-Hajimemashita.jpg",
-        "role":"itsudemo jitaku ni kaerareru ore wa, isekai de gyoushounin o hajimemashita"
-    },{
-        "name": "Kaette kudasai! Akutsu-san",
-        "img":"https://i.ibb.co/p2s4vZR/Kaette-kudasai-Akutsu-san.jpg",
-        "role":"kaette kudasai! akutsu-san"
-    },{
-        "name":"Kanojo no Kagi wo Akeru Houhou" ,
-        "img":"https://i.ibb.co/XJynHR0/Kanojo-no-Kagi-wo-Akeru-Houhou.webp",
-        "role":"kanojo no kagi wo akeru houhou"
-    },{
-        "name": "Kanzen Kaihi Healer no Kiseki",
-        "img":"https://i.ibb.co/SsTWkw3/Kanzen-Kaihi-Healer-no-Kiseki.jpg",
-        "role":"kanzen kaihi healer no kiseki"
-    },{
-        "name":"Kara no Kyoukai - Mirai Fukuin (Doujinshi)" ,
-        "img":"https://i.ibb.co/QcvFWsV/Kara-no-Kyoukai-Mirai-Fukuin-Doujinshi.jpg",
-        "role":"kara no kyoukai mirai fukuin"
-    },{
-        "name": "Koitsu-ra no Shoutai ga Onnada to Oredake ga Shitte Iru",
-        "img":"https://i.ibb.co/DbM3q69/Koitsu-ra-no-Shoutai-ga-Onnada-to-Oredake-ga-Shitte-Iru.jpg",
-        "role":"koitsu-ra no shoutai ga onnada to oredake ga shitte iru"
-    },{
-        "name":"Kou 1 Desu ga Isekai de Joushu Hajimemashita" ,
-        "img":"https://i.ibb.co/cwHZ3Qw/Kou-1-Desu-ga-Isekai-de-Joushu-Hajimemashita.jpg",
-        "role":"kou 1 desu ga isekai de joushu hajimemashita"
-    },{
-        "name":"Kou 2 ni Time Leaped Shita Ore ga, Touji suki Datta Sensei ni Kokutta Kekka" ,
-        "img":"https://i.ibb.co/Z1hxbKN/Kou-2-ni-Time-Leaped-Shita-Ore-ga-Touji-suki-Datta-Sensei-ni-Kokutta-Kekka.webp",
-        "role":"kou 2 ni time leaped shita ore ga, touji suki datta sensei ni kokutta kekka"
-    },{
-        "name":"Kuro Gyaru-san ga Kuru!" ,
-        "img":"https://i.ibb.co/Kq798bg/Kuro-Gyaru-san-ga-Kuru.jpg",
-        "role":"kuro gyaru san ga kuru"
-    },{
-        "name":"Megami-ryou no Ryoubo-kun" ,
-        "img":"https://i.ibb.co/3dPqGy7/Megami-ryou-no-Ryoubo-kun.jpg",
-        "role":"megami-ryou no ryoubo-kun"
-    },{
-        "name":"My Love Tiger" ,
-        "img":"https://i.ibb.co/W04g211/My-Love-Tiger.jpg",
-        "role":"my love tiger"
-    },{
-        "name":"Nande koko ni sensei ga!?" ,
-        "img":"https://i.ibb.co/sCMnpCP/Nande-koko-ni-sensei-ga.jpg",
-        "role":"nande koko ni sensei ga!?"
-    },{
-        "name":"Ookii Kouhai wa Suki Desu ka?" ,
-        "img":"https://i.ibb.co/6bZbkLZ/Ookii-Kouhai-wa-Suki-Desu-ka.jpg",
-        "role":"ookii kouhai wa suki desu ka"
-    },{
-        "name":"Ookiku nattara kekkon suru !" ,
-        "img":"https://i.ibb.co/qdz1MZ9/Ookiku-nattara-kekkon-suru.jpg",
-        "role":"ookiku nattara kekkon suru!"
-    },{
-        "name":"Saber Watches Unlimited Blade Works" ,
-        "img":"https://i.ibb.co/NKNPTdL/Saber-Watches-Unlimited-Blade-Works.jpg",
-        "role":"saber watches unlimited blade works"
-    },{
-        "name":"Sensei de ○○ shicha Ikemasen!" ,
-        "img":"https://i.ibb.co/PxzP3nN/Sensei-de-shicha-Ikemasen.webp",
-        "role":"sensei de ○○ shicha ikemasen!"
-    },{
-        "name":"Shinju no Nectar" ,
-        "img":"https://i.ibb.co/rkqNttk/Shinju-no-Nectar.jpg",
-        "role":"shinju no nectar"
-    },{
-        "name":"sore ga kanojo no seigi nara" ,
-        "img":"https://i.ibb.co/qywGskK/sore-ga-kanojo-no-seigi-nara.jpg",
-        "role":"sore ga kanojo no seigi nara"
-    },{
-        "name":"Starting out as Friends With a Yankee Girl" ,
-        "img":"https://i.ibb.co/y46jphB/Starting-out-as-Friends-With-a-Yankee-Girl.jpg",
-        "role":"starting out as friends with a yankee girl"
-    },{
-        "name":"Sukinako ga Megane wo Wasureta" ,
-        "img":"https://i.ibb.co/GczYhJJ/Sukinako-ga-Megane-wo-Wasureta.jpg",
-        "role":"sukinako ga megane wo wasureta"
-    },{
-        "name":"Sunohara-sou no Kanrinin-san" ,
-        "img":"https://i.ibb.co/crmBFRX/Sunohara-sou-no-Kanrinin-san.jpg",
-        "role":"sunohara-sou no kanrinin-san"
-    },{
-        "name":"Tensei Inja wa Hokusoemu" ,
-        "img":"https://i.ibb.co/47QPybh/Tensei-Inja-wa-Hokusoemu.jpg",
-        "role":"tensei inja wa hokusoemu"
-    },{
-        "name":"The Reincarnated Inferior Magic Swordsman" ,
-        "img":"https://i.ibb.co/fHf7NPr/The-Reincarnated-Inferior-Magic-Swordsman.jpg",
-        "role":"the reincarnated inferior magic swordsman"
-    },{
-        "name":"Yankee JK Kuzuhana-chan" ,
-        "img":"https://i.ibb.co/2qsSrFn/Yankee-JK-Kuzuhana-chan.jpg?size=2048",
-        "role":"yankee jk kuzuhana-chan"
-    },{
-        "name":"Yuujin Kyara no Ore ga Motemakuru Wakenai daro?" ,
-        "img":"https://i.ibb.co/54DV7J4/Yuujin-Kyara-no-Ore-ga-Motemakuru-Wakenai-daro.jpg",
-        "role":"yuujin kyara no ore ga motemakuru wakenai daro"
-    },{
-        "name":"Shounin Yuusha wa Isekai wo Gyuujiru! – Saibai Skill de Nandemo Fuyashi Chaimasu",
-        "img":"https://i.ibb.co/frCY9Xw/Shounin-Yuusha-wa-Isekai-wo-Gyuujiru-Saibai-Skill-de-Nandemo-Fuyashi-Chaimasu.jpg",
-        "role":"shounin yuusha wa isekai wo gyuujiru! – saibai skill de nandemo fuyashi chaimasu"
-    },{
-        "name":"Ojousama no Shimobe",
-        "img":"https://i.ibb.co/QcXGbT9/ojousama-no-shimobe.jpg",
-        "role":"ojousama no shimobe"
-    },{
-        "name":"Jishou F-Rank no Oniisama ga Game de Hyouka sareru Gakuen no Chouten ni Kunrin suru Sou desu yo?",
-        "img":"https://i.ibb.co/QKnGKb6/Jishou-F-Rank-no-Oniisama-ga-Game-de-Hyouka-sareru-Gakuen-no-Chouten-ni-Kunrin-suru-Sou-desu-yo.jpg",
-        "role":"jishou f-rank no oniisama ga game de hyouka sareru gakuen no chouten ni kunrin suru sou desu yo?"
-    },{
-        "name":"The Strongest Dull Prince's Secret Battle for the Throne",
-        "img":"https://i.ibb.co/GdSBm3D/The-Strongest-Dull-Prince-s-Secret-Battle-for-the-Throne.jpg",
-        "role":"the strongest dull prince's secret battle for the throne"
-    },{
-        "name":"Isekai o Denma dake de Ikinuku",
-        "img":"https://i.ibb.co/V9BPG7B/the-rising-of-vibrator-hero.jpg",
-        "role":"the rising of vibrator hero"
-    },{
-        "name":"Love-Kyo ~My private tutor is too xxx for me to study",
-        "img":"https://i.ibb.co/MfrBwqn/Love-Kyo-My-private-tutor-is-too-xxx-for-me-to-study.webp",
-        "role":"love-kyo ~my private tutor is too xxx for me to study"
-    },{
-        "name":"Kamiyama-san no Kami Bukuro no Naka ni wa",
-        "img":"https://i.ibb.co/58r1Pwv/Kamiyama-san-no-Kami-Bukuro-no-Naka-ni-wa.jpg",
-        "role":"kamiyama-san no kami bukuro no naka ni wa"
-    },{
-        "name":"Kimi wa Meido-sama",
-        "img":"https://i.ibb.co/1LLr8xD/Kimi-wa-Meido-sama.jpg",
-        "role":"kimi wa meido-sama"
-    },{
-        "name":"Shiboritoranaide, Onna Shounin-san",
-        "img":"https://i.ibb.co/NWvqxw8/Shiboritoranaide-Onna-Shounin-san.jpg",
-        "role":"shiboritoranaide, onna shounin-san"
-    },{
-        "name":"Bijo to Kenja to Majin no Ken",
-        "img":"https://zupimages.net/up/21/39/cu15.jpg",
-        "role": "beauty, sage and the devil's sword"
-    },{
-        "name":"I'm Sandwiched Between Sweet and Spicy Step-Sisters",
-        "img":"https://i.ibb.co/TTpG0jv/i-m-sandwiched-between-sweet-and-spicy-step-sisters.jpg",
-        "role":"i'm sandwiched between sweet and spicy step-sisters"
-    },{
-        "name":"Black Gakkou ni Tsutometeshimatta Sensei",
-        "img":"https://i.ibb.co/Npc2mrF/Black-Gakkou-ni-Tsutometeshimatta-Sensei.jpg",
-        "role":"black gakkou ni tsutometeshimatta sensei"
-    },{
-        "name":"The Reincarnation of the Strongest Onmyoji",
-        "img":"https://i.ibb.co/BNnmZwT/the-reincarnation-of-the-strongest-onmyoji-these-monsters-are-too-weak-compared-to-my-youkai.jpg",
-        "role":"the reincarnation of the strongest onmyoji ~ these monsters are too weak compared to my youkai~"
-    },
-    {
-        "name":"The Iceblade Magician Rules Over the World",
-        "img":"https://i.ibb.co/mz46yGg/The-Iceblade-Magician-Rules-Over-the-World.jpg",
-        "role":"the iceblade magician rules over the world"
-    },{
-        "name":"Goddess Café Terrace",
-        "img":"https://i.ibb.co/RS2Z8XP/goddess-cafe-terrace.jpg",
-        "role":"goddess cafe terrace"
-    },{
-        "name":"Magan to Dangan o Tsukatte Isekai o Buchinuku!",
-        "img":"https://i.ibb.co/NjkK8yV/break-through-in-another-world-with-magical-eyes-and-bullets.jpg",
-        "role":"break through in another world with magical eyes and bullets"
-    },{
-        "name":"Ani Yome-san no Sewa wo Yaku",
-        "img":"https://i.ibb.co/D76TFgG/Ani-Yome-san-no-Sewa-wo-Yaku.jpg",
-        "role":"ani yome-san no sewa wo yaku"
-    }
-]   
+[
+  {
+    "name": "2.5 Dimensional Seduction",
+    "img": "https://i.ibb.co/JxyXKWq/2-5-Dimensional-Seduction.jpg",
+    "role": "2.5 dimensional seduction"
+  },
+  {
+    "name": "A Happy Couple",
+    "img": "https://i.ibb.co/xS6HzYw/A-Happy-Couple.jpg",
+    "role": "a happy couple"
+  },
+  {
+    "name": "A Warrior Exiled by the Hero and His Lover",
+    "img": "https://i.ibb.co/2KYhbQt/A-Warrior-Exiled-by-the-Hero-and-His-Lover.jpg",
+    "role": "a warrior exiled by the hero and his lover"
+  },
+  {
+    "name": "Amano Megumi wa Suki Darake!",
+    "img": "https://i.ibb.co/bWVskgM/Amano-Megumi-wa-Suki-Darake.jpg",
+    "role": "amano megumi wa suki darake!"
+  },
+  {
+    "name": "An Active Hunter in Hokkaido Has Been Thrown into a Different World",
+    "img": "https://i.ibb.co/TWS5Zs9/An-Active-Hunter-in-Hokkaido-Has-Been-Thrown-into-a-Different-World.jpg",
+    "role": "different world hunting with an elf wife"
+  },
+  {
+    "name": "Ano Oni Kyoushi ga Boku no Ane ni Narun desu ka?",
+    "img": "https://i.ibb.co/2dnzmkD/Ano-Oni-Kyoushi-ga-Boku-no-Ane-ni-Narun-desu-ka.jpg",
+    "role": "ano oni kyoushi"
+  },
+  {
+    "name": "Bijin Onna Joushi Takizawa-san",
+    "img": "https://i.ibb.co/1QK6LYz/Bijin-Onna-Joushi-Takizawa-san.jpg",
+    "role": "bijin onna joushi takizawa-san"
+  },
+  {
+    "name": "Boku no kanojo sensei",
+    "img": "https://i.ibb.co/JrBxSw6/Boku-no-kanojo-sensei.jpg",
+    "role": "boku no kanojo sensei"
+  },
+  {
+    "name": "Choppiri Toshiue Demo Kanojo ni Shite Kuremasu ka?",
+    "img": "https://i.ibb.co/D8FJNHG/Choppiri-Toshiue-Demo-Kanojo-ni-Shite-Kuremasu-ka.jpg",
+    "role": "choppiri toshiue demo kanojo ni shite kuremasu ka?"
+  },
+  {
+    "name": "Danchigai",
+    "img": "https://i.ibb.co/59fC3SC/Danchigai.jpg",
+    "role": "danchigai"
+  },
+  {
+    "name": "Do Chokkyuu Kareshi x Kanojo",
+    "img": "https://i.ibb.co/1T76YPb/Do-Chokkyuu-Kareshi-x-Kanojo.jpg",
+    "role": "do chokkyuu kareshi x kanojo"
+  },
+  {
+    "name": "Doctor’s Rebirth",
+    "img": "https://i.ibb.co/PgfXF9y/Doctor-s-Rebirth.jpg",
+    "role": "doctor's rebirth"
+  },
+  {
+    "name": "English XX Sensei",
+    "img": "https://i.ibb.co/zhRRnLf/English-XX-Sensei.jpg",
+    "role": "english xx sensei"
+  },
+  {
+    "name": "gamers !",
+    "img": "https://i.ibb.co/CJVr67B/gamers.jpg",
+    "role": "gamers"
+  },
+  {
+    "name": "Hell Mode - Yarikomi Suki no Gamer wa Hai Settei no Isekai de Musou Suru",
+    "img": "https://i.ibb.co/YNwcPbm/Hell-Mode-Yarikomi-Suki-no-Gamer-wa-Hai-Settei-no-Isekai-de-Musou-Suru.jpg",
+    "role": "hell mode"
+  },
+  {
+    "name": "Hiota no Kanojo ga Ore no Motteru Eroge ni Kyoumi Shinshin Nanda ga.....",
+    "img": "https://i.ibb.co/vLmYGJY/Hiota-no-Kanojo-ga-Ore-no-Motteru-Eroge-ni-Kyoumi-Shinshin-Nanda-ga.jpg",
+    "role": "hiota no kanojo ga ore no motteru eroge ni kyoumi shinshin nanda ga"
+  },
+  {
+    "name": "Ie Ga Moete Jinsei Dou Demo Yoku Natta Kara, Nokotta Nakenashi No Kin De Dark Elf No Dorei O Katta",
+    "img": "https://i.ibb.co/pRHRJVs/Ie-Ga-Moete-Jinsei-Dou-Demo-Yoku-Natta-Kara-Nokotta-Nakenashi-No-Kin-De-Dark-Elf-No-Dorei-O-Katta.jpg",
+    "role": "ie ga moete jinsei dou demo yoku natta kara, nokotta nakenashi no kin de dark elf no dorei o katta"
+  },
+  {
+    "name": "Inumimi",
+    "img": "https://i.ibb.co/PN9dQKY/Inumimi.jpg",
+    "role": "inumimi"
+  },
+  {
+    "name": "Isuca",
+    "img": "https://i.ibb.co/2nqkMG6/Isuca.jpg",
+    "role": "isuca"
+  },
+  {
+    "name": "Itsudemo Jitaku Ni Kaerareru Ore Wa, Isekai De Gyoushounin O Hajimemashita",
+    "img": "https://i.ibb.co/Bnv6Vcv/Itsudemo-Jitaku-Ni-Kaerareru-Ore-Wa-Isekai-De-Gyoushounin-O-Hajimemashita.jpg",
+    "role": "itsudemo jitaku ni kaerareru ore wa, isekai de gyoushounin o hajimemashita"
+  },
+  {
+    "name": "Kaette kudasai! Akutsu-san",
+    "img": "https://i.ibb.co/p2s4vZR/Kaette-kudasai-Akutsu-san.jpg",
+    "role": "kaette kudasai! akutsu-san"
+  },
+  {
+    "name": "Kanojo no Kagi wo Akeru Houhou",
+    "img": "https://i.ibb.co/XJynHR0/Kanojo-no-Kagi-wo-Akeru-Houhou.webp",
+    "role": "kanojo no kagi wo akeru houhou"
+  },
+  {
+    "name": "Kanzen Kaihi Healer no Kiseki",
+    "img": "https://i.ibb.co/SsTWkw3/Kanzen-Kaihi-Healer-no-Kiseki.jpg",
+    "role": "kanzen kaihi healer no kiseki"
+  },
+  {
+    "name": "Kara no Kyoukai - Mirai Fukuin (Doujinshi)",
+    "img": "https://i.ibb.co/QcvFWsV/Kara-no-Kyoukai-Mirai-Fukuin-Doujinshi.jpg",
+    "role": "kara no kyoukai mirai fukuin"
+  },
+  {
+    "name": "Koitsu-ra no Shoutai ga Onnada to Oredake ga Shitte Iru",
+    "img": "https://i.ibb.co/DbM3q69/Koitsu-ra-no-Shoutai-ga-Onnada-to-Oredake-ga-Shitte-Iru.jpg",
+    "role": "koitsu-ra no shoutai ga onnada to oredake ga shitte iru"
+  },
+  {
+    "name": "Kou 1 Desu ga Isekai de Joushu Hajimemashita",
+    "img": "https://i.ibb.co/cwHZ3Qw/Kou-1-Desu-ga-Isekai-de-Joushu-Hajimemashita.jpg",
+    "role": "kou 1 desu ga isekai de joushu hajimemashita"
+  },
+  {
+    "name": "Kou 2 ni Time Leaped Shita Ore ga, Touji suki Datta Sensei ni Kokutta Kekka",
+    "img": "https://i.ibb.co/Z1hxbKN/Kou-2-ni-Time-Leaped-Shita-Ore-ga-Touji-suki-Datta-Sensei-ni-Kokutta-Kekka.webp",
+    "role": "kou 2 ni time leaped shita ore ga, touji suki datta sensei ni kokutta kekka"
+  },
+  {
+    "name": "Kuro Gyaru-san ga Kuru!",
+    "img": "https://i.ibb.co/Kq798bg/Kuro-Gyaru-san-ga-Kuru.jpg",
+    "role": "kuro gyaru san ga kuru"
+  },
+  {
+    "name": "Megami-ryou no Ryoubo-kun",
+    "img": "https://i.ibb.co/3dPqGy7/Megami-ryou-no-Ryoubo-kun.jpg",
+    "role": "megami-ryou no ryoubo-kun"
+  },
+  {
+    "name": "My Love Tiger",
+    "img": "https://i.ibb.co/W04g211/My-Love-Tiger.jpg",
+    "role": "my love tiger"
+  },
+  {
+    "name": "Nande koko ni sensei ga!?",
+    "img": "https://i.ibb.co/sCMnpCP/Nande-koko-ni-sensei-ga.jpg",
+    "role": "nande koko ni sensei ga!?"
+  },
+  {
+    "name": "Ookii Kouhai wa Suki Desu ka?",
+    "img": "https://i.ibb.co/6bZbkLZ/Ookii-Kouhai-wa-Suki-Desu-ka.jpg",
+    "role": "ookii kouhai wa suki desu ka"
+  },
+  {
+    "name": "Ookiku nattara kekkon suru !",
+    "img": "https://i.ibb.co/qdz1MZ9/Ookiku-nattara-kekkon-suru.jpg",
+    "role": "ookiku nattara kekkon suru!"
+  },
+  {
+    "name": "Saber Watches Unlimited Blade Works",
+    "img": "https://i.ibb.co/NKNPTdL/Saber-Watches-Unlimited-Blade-Works.jpg",
+    "role": "saber watches unlimited blade works"
+  },
+  {
+    "name": "Sensei de ○○ shicha Ikemasen!",
+    "img": "https://i.ibb.co/PxzP3nN/Sensei-de-shicha-Ikemasen.webp",
+    "role": "sensei de ○○ shicha ikemasen!"
+  },
+  {
+    "name": "Shinju no Nectar",
+    "img": "https://i.ibb.co/rkqNttk/Shinju-no-Nectar.jpg",
+    "role": "shinju no nectar"
+  },
+  {
+    "name": "sore ga kanojo no seigi nara",
+    "img": "https://i.ibb.co/qywGskK/sore-ga-kanojo-no-seigi-nara.jpg",
+    "role": "sore ga kanojo no seigi nara"
+  },
+  {
+    "name": "Starting out as Friends With a Yankee Girl",
+    "img": "https://i.ibb.co/y46jphB/Starting-out-as-Friends-With-a-Yankee-Girl.jpg",
+    "role": "starting out as friends with a yankee girl"
+  },
+  {
+    "name": "Sukinako ga Megane wo Wasureta",
+    "img": "https://i.ibb.co/GczYhJJ/Sukinako-ga-Megane-wo-Wasureta.jpg",
+    "role": "sukinako ga megane wo wasureta"
+  },
+  {
+    "name": "Sunohara-sou no Kanrinin-san",
+    "img": "https://i.ibb.co/crmBFRX/Sunohara-sou-no-Kanrinin-san.jpg",
+    "role": "sunohara-sou no kanrinin-san"
+  },
+  {
+    "name": "Tensei Inja wa Hokusoemu",
+    "img": "https://i.ibb.co/47QPybh/Tensei-Inja-wa-Hokusoemu.jpg",
+    "role": "tensei inja wa hokusoemu"
+  },
+  {
+    "name": "The Reincarnated Inferior Magic Swordsman",
+    "img": "https://i.ibb.co/fHf7NPr/The-Reincarnated-Inferior-Magic-Swordsman.jpg",
+    "role": "the reincarnated inferior magic swordsman"
+  },
+  {
+    "name": "Yankee JK Kuzuhana-chan",
+    "img": "https://i.ibb.co/2qsSrFn/Yankee-JK-Kuzuhana-chan.jpg?size=2048",
+    "role": "yankee jk kuzuhana-chan"
+  },
+  {
+    "name": "Yuujin Kyara no Ore ga Motemakuru Wakenai daro?",
+    "img": "https://i.ibb.co/54DV7J4/Yuujin-Kyara-no-Ore-ga-Motemakuru-Wakenai-daro.jpg",
+    "role": "yuujin kyara no ore ga motemakuru wakenai daro"
+  },
+  {
+    "name": "Shounin Yuusha wa Isekai wo Gyuujiru! – Saibai Skill de Nandemo Fuyashi Chaimasu",
+    "img": "https://i.ibb.co/frCY9Xw/Shounin-Yuusha-wa-Isekai-wo-Gyuujiru-Saibai-Skill-de-Nandemo-Fuyashi-Chaimasu.jpg",
+    "role": "shounin yuusha wa isekai wo gyuujiru! – saibai skill de nandemo fuyashi chaimasu"
+  },
+  {
+    "name": "Ojousama no Shimobe",
+    "img": "https://i.ibb.co/QcXGbT9/ojousama-no-shimobe.jpg",
+    "role": "ojousama no shimobe"
+  },
+  {
+    "name": "Jishou F-Rank no Oniisama ga Game de Hyouka sareru Gakuen no Chouten ni Kunrin suru Sou desu yo?",
+    "img": "https://i.ibb.co/QKnGKb6/Jishou-F-Rank-no-Oniisama-ga-Game-de-Hyouka-sareru-Gakuen-no-Chouten-ni-Kunrin-suru-Sou-desu-yo.jpg",
+    "role": "jishou f-rank no oniisama ga game de hyouka sareru gakuen no chouten ni kunrin suru sou desu yo?"
+  },
+  {
+    "name": "The Strongest Dull Prince's Secret Battle for the Throne",
+    "img": "https://i.ibb.co/GdSBm3D/The-Strongest-Dull-Prince-s-Secret-Battle-for-the-Throne.jpg",
+    "role": "the strongest dull prince's secret battle for the throne"
+  },
+  {
+    "name": "Isekai o Denma dake de Ikinuku",
+    "img": "https://i.ibb.co/V9BPG7B/the-rising-of-vibrator-hero.jpg",
+    "role": "the rising of vibrator hero"
+  },
+  {
+    "name": "Love-Kyo ~My private tutor is too xxx for me to study",
+    "img": "https://i.ibb.co/MfrBwqn/Love-Kyo-My-private-tutor-is-too-xxx-for-me-to-study.webp",
+    "role": "love-kyo ~my private tutor is too xxx for me to study"
+  },
+  {
+    "name": "Kamiyama-san no Kami Bukuro no Naka ni wa",
+    "img": "https://i.ibb.co/58r1Pwv/Kamiyama-san-no-Kami-Bukuro-no-Naka-ni-wa.jpg",
+    "role": "kamiyama-san no kami bukuro no naka ni wa"
+  },
+  {
+    "name": "Kimi wa Meido-sama",
+    "img": "https://i.ibb.co/1LLr8xD/Kimi-wa-Meido-sama.jpg",
+    "role": "kimi wa meido-sama"
+  },
+  {
+    "name": "Shiboritoranaide, Onna Shounin-san",
+    "img": "https://i.ibb.co/NWvqxw8/Shiboritoranaide-Onna-Shounin-san.jpg",
+    "role": "shiboritoranaide, onna shounin-san"
+  },
+  {
+    "name": "Bijo to Kenja to Majin no Ken",
+    "img": "https://zupimages.net/up/21/39/cu15.jpg",
+    "role": "beauty, sage and the devil's sword"
+  },
+  {
+    "name": "I'm Sandwiched Between Sweet and Spicy Step-Sisters",
+    "img": "https://i.ibb.co/TTpG0jv/i-m-sandwiched-between-sweet-and-spicy-step-sisters.jpg",
+    "role": "i'm sandwiched between sweet and spicy step-sisters"
+  },
+  {
+    "name": "Black Gakkou ni Tsutometeshimatta Sensei",
+    "img": "https://i.ibb.co/Npc2mrF/Black-Gakkou-ni-Tsutometeshimatta-Sensei.jpg",
+    "role": "black gakkou ni tsutometeshimatta sensei"
+  },
+  {
+    "name": "The Reincarnation of the Strongest Onmyoji",
+    "img": "https://i.ibb.co/BNnmZwT/the-reincarnation-of-the-strongest-onmyoji-these-monsters-are-too-weak-compared-to-my-youkai.jpg",
+    "role": "the reincarnation of the strongest onmyoji ~ these monsters are too weak compared to my youkai~"
+  },
+  {
+    "name": "The Iceblade Magician Rules Over the World",
+    "img": "https://i.ibb.co/mz46yGg/The-Iceblade-Magician-Rules-Over-the-World.jpg",
+    "role": "the iceblade magician rules over the world"
+  },
+  {
+    "name": "Goddess Café Terrace",
+    "img": "https://i.ibb.co/RS2Z8XP/goddess-cafe-terrace.jpg",
+    "role": "goddess cafe terrace"
+  },
+  {
+    "name": "Magan to Dangan o Tsukatte Isekai o Buchinuku!",
+    "img": "https://i.ibb.co/NjkK8yV/break-through-in-another-world-with-magical-eyes-and-bullets.jpg",
+    "role": "break through in another world with magical eyes and bullets"
+  },
+  {
+    "name": "Ani Yome-san no Sewa wo Yaku",
+    "img": "https://i.ibb.co/D76TFgG/Ani-Yome-san-no-Sewa-wo-Yaku.jpg",
+    "role": "ani yome-san no sewa wo yaku"
+  },
+  {
+    "name": "Skill Lender's Retrieving (tale) ～i Told You It's 10% Per 10 Days At First, Didn't I～",
+    "img": "https://i.ibb.co/Yy1Vhm5/Skill-Lender-s-Retrieving.jpg",
+    "role": "skill lender's retrieving"
+  },
+  {
+    "name": "gal-sen",
+    "img": "https://i.ibb.co/6Y5xCq2/gal-sen.jpg",
+    "role": "gyaru sen"
+  },
+  {
+    "name": "\"Nobukuni-san\" does she like me ?",
+    "img": "https://uploads.mangadex.org/covers/7b3eacca-6f5a-48ce-8c8f-0ecaa78368b5/5bbddd53-2f15-4c1b-9d51-472781b60d0b.jpg",
+    "role": "nobukuni-san does she like me"
+  },
+  {
+    "name": "Ansatsu Skill de Isekai Saikyou: Renkinjutsu to Ansatsujutsu o Kiwameta Ore wa, Sekai o Kage kara Shihai suru",
+    "img": "https://uploads.mangadex.org/covers/860c10f3-4e84-44b9-86ed-04ddd65ad648/21a5ce3f-fef8-4ec5-83bd-afbecad20525.jpg",
+    "role": "ansatsu skill de isekai saikyou: renkinjutsu to ansatsujutsu o kiwameta ore wa, sekai o kage kara sh"
+  }
+]

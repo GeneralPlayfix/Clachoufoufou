@@ -44,15 +44,6 @@ function executeCommand(msg) {
     delete require.cache[require.resolve(`../config/${file}`)];
     let data = require(`../${configFolder}${file}`);
     if (data.module == true) {
-      if (data.requireRoles) {
-        let findRole = false;
-        for (let messages of msg.member.roles.cache) {
-          if (data.requiredRoles.includes(messages[0])){
-            findRole = true;
-            break;
-          }
-        }
-        if (findRole){
           if (!(data.requireRoles) || msg.member.roles.cache.some((r) => data.requiredRoles.includes(r.id))) {
             if (!(data.whitelistEnabled) || data.whitelist.includes(msg.author.id)) {
               if (!(data.blacklistEnabled) || !data.blacklist.includes(msg.author.id)) {
@@ -63,8 +54,6 @@ function executeCommand(msg) {
               }
             }
           }
-        }
-      }
      
     }
   }

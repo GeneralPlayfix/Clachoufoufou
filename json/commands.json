@@ -1,37 +1,47 @@
 [
-    {
-        "name":"help",
-        "nameWithText":"none",
-        "description":"Permet d'afficher toutes les commandes existantes !"
-    },
-    {
-        "name":"addsw",
-        "nameWithText":"<mot sexuel>",
-        "description":"Il vous suffit d'écrire ceci afin d'ajouter un mot sexuel à la liste !"
-    },
-    {
-        "name":"anime",
-        "nameWithText":"<nom de l'anime>",
-        "description":"Il vous suffit d'écrire ceci afin d'avoir les informations de l'anime rentré !"
-    },
-    {
-        "name":"manga",
-        "nameWithText":"<nom du manga>",
-        "description":"Il vous suffit d'écrire ceci afin d'avoir les informations du manga !"
-    
-    },
-    {
-        "name":"clear",
-        "nameWithText":"<nombre> ou <ping> <nombre>",
-        "description":"Commande qui permet de supprimer un certain nombre de message"
-    },
-    {
-        "name":"module",
-        "nameWithText":"<list> ou <nom> config ou <nom> activity",
-        "description":"TO DO"
-    },{
-        "name":"troll",
-        "nameWithText":"none",
-        "description":"Le bot va te regarder de haut 👀"    
-    }
+  {
+    "name": "help",
+    "nameWithText": "none",
+    "description": "Permet d'afficher toutes les commandes existantes !"
+  },
+  {
+    "name": "addsw",
+    "nameWithText": "<mot sexuel>",
+    "description": "Il vous suffit d'écrire ceci afin d'ajouter un mot sexuel à la liste !"
+  },
+  {
+    "name": "anime",
+    "nameWithText": "<nom de l'anime>",
+    "description": "Il vous suffit d'écrire ceci afin d'avoir les informations de l'anime rentré !"
+  },
+  {
+    "name": "manga",
+    "nameWithText": "<nom du manga>",
+    "description": "Il vous suffit d'écrire ceci afin d'avoir les informations du manga !"
+  },
+  {
+    "name": "clear",
+    "nameWithText": "<nombre> ou <ping> <nombre>",
+    "description": "Commande qui permet de supprimer un certain nombre de message"
+  },
+  {
+    "name": "module",
+    "nameWithText": "<list> ou <nom> config ou <nom> activity",
+    "description": "TO DO"
+  },
+  {
+    "name": "troll",
+    "nameWithText": "none",
+    "description": "Le bot va te regarder de haut 👀"
+  },
+  {
+    "name":"addteamproject",
+    "nameWithText":"none",
+    "description":"Une commande qui permet d'ajouter une nouveau manga à ceux de la liste de la team"
+  },
+  {
+    "name":"team_project",
+    "nameWithText":"none",
+    "description":"Afficher un slider avec tous les projets de la team"
+  }
 ]

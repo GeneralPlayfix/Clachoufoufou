@@ -1,6 +1,6 @@
 const { Client, MessageEmbed, Message, MessageAttachment, Role, RoleManager } = require("discord.js");
 prefix = require("../json/prefix.json");
-const malScraper = require("mal-scraper");
+// const malScraper = require("mal-scraper");
 const axios = require('axios');
 
 function onCommand(msg, allCommandInformations) {
