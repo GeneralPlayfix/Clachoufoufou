@@ -42,8 +42,8 @@ async function executeCommand(msg, commandArguments) {
       let projectId = await carousel_function.getProjectById(roleId)
       project = allProjects[projectId]
     }
-  }else{
-      project = allProjects[~~(Math.random() * allProjects.length)];    
+  } else {
+    project = allProjects[~~(Math.random() * allProjects.length)];
   }
   let randomImage = getRandomImage(project);
   const embed = new MessageEmbed();
@@ -56,8 +56,8 @@ async function executeCommand(msg, commandArguments) {
     await msg.react("⏪")
     await msg.react("⏩")
   })
-
 }
+
 function getRandomImage(project) {
   delete require.cache[require.resolve(`../json/images.json`)]
   const jsonOfImages = require("../json/images.json");

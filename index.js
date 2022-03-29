@@ -96,44 +96,73 @@ async function japanreadScraper() {
   const page = await browser.newPage();
   page.setDefaultNavigationTimeout(0);
   page.setUserAgent("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
-  await page.goto(`https://www.japanread.cc/teams/1058/team-clachoufoufou`, {
-    waitUntil: ["load", "domcontentloaded"],
+  await page.goto(`https://bentomanga.com/team/team-clachoufoufou/projects?order=desc`, {
+    waitUntil: ["load", "domcontentloaded", "networkidle0", "networkidle2"],
   });
-  let title = "";
   allMangasOfTheWebPage = await page.evaluate(() => {
-    let chaptertoExport = []
-    let chapters = document.querySelectorAll("body > section > div:nth-child(2) > div.row.no-gutters")
-    for (let i = 1; i < chapters.length; i++) {
-      let chap = chapters[i].querySelector("div.col.col-md-9 > div > div.col.col-lg-5.row.no-gutters.align-items-center.flex-nowrap.text-truncate.pr-1.order-lg-2 > a");
-      let chapLink = chap.href;
-      let chapNum = chap.innerText;
-      let timerArray = chapters[i].querySelector("div.col.col-md-9 > div > div.col-2.col-lg-1.ml-1.text-right.text-truncate.order-lg-8").innerText.split(" ");
-      let timer = timerArray[0].replace(/[\s-]+$/, "").split(/[\s-]/).toString();
-      let unity = timerArray[1].replace(/[\s-]+$/, "").split(/[\s-]/).toString();
-      if (unity == "h" || unity == "min" && timer <= 45) {
-        //s'il n'y a pas de titre
-        (chapters[i].querySelector("div.col.col-md-3.row.no-gutters.flex-nowrap.align-items-start.p-2.font-weight-bold.border-bottom > a") != null) ? title = chapters[i].querySelector("div.col.col-md-3.row.no-gutters.flex-nowrap.align-items-start.p-2.font-weight-bold.border-bottom > a").innerText : "";
-        chaptertoExport.push({
-          title: title,
-          chapNum: chapNum,
-          chapLink: chapLink
-        })
-      }
+    let mangas = []
+    let a = document.querySelectorAll("#projects_content > div > div.div-manga_datas > div.div-manga_datas-header > a")
+    for (let manga of a) {
+      let link = manga.href
+      let title = manga.querySelector("div > div.component-manga-title_main > h1").innerText
+      mangas.push({
+        title: title,
+        mangaLink: link
+      })
     }
-    return chaptertoExport;
+    return mangas
   });
-  await browser.close();
+  await browser.close()
+  await getAllChapter(allMangasOfTheWebPage)
+  setTimeout(japanreadScraper, 5 * 60 * 1000);
+}
+async function getAllChapter(allMangasOfTheWebPage) {
+  const browser = await puppeteer.launch({ headless: true }); //headless false permet de démarer une instance visible de chromium
+  let allChapterInformations = []
+  for (let manga of allMangasOfTheWebPage) {
+    let chapters = []
+    const page = await browser.newPage();
+    page.setDefaultNavigationTimeout(0);
+    page.setUserAgent("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
+    await page.goto(`${manga.mangaLink}`, {
+      waitUntil: ["load", "domcontentloaded", "networkidle0", "networkidle2"],
+    });
+    chapters = await page.evaluate(() => {
+      let allAvaibleChapters = document.querySelectorAll("#chapters_content > div > div")
+      let chapNum = ""
+      let chapToExport = []
+      for (let chapter of allAvaibleChapters) {
+        let dateArray = chapter.querySelector("div.component-chapter-date").innerText.split(" ")
+        let duration = dateArray[0]
+        let unity = dateArray[1]
+        if (unity == "s" || unity == "min" && duration <= 45) {
+          chapNum = chapter.querySelector("div.component-chapter-title > a > span.manga_nb_chapter").innerText
+          let chapLink = chapter.querySelector("div.component-chapter-title > a").href
+          let title = document.querySelector("#manga > div.manga-infos > div.component-manga-title > div.component-manga-title_main > h1").innerText
+          chapToExport.push({
+            title: title,
+            chapNum: chapNum,
+            chapLink: chapLink
+          })
+        }
+      }
+      return chapToExport
+    });
+    for (let chapter of chapters) {
+      allChapterInformations.push(chapter)
+    }
+    await page.close()
+  }
+  await browser.close()
   let mangaToPost = [];
-  if (allMangasOfTheWebPage.length != 0) {
-    mangaToPost = await checkScrapingData(allMangasOfTheWebPage);
+  if (allChapterInformations.length != 0) {
+    mangaToPost = await checkScrapingData(allChapterInformations);
     if (mangaToPost.length != 0) {
       await generateEmbedForMangasToPost(mangaToPost);
     }
   }
   if (mangaToPost.length == 0) console.log("Pas de nouveauté de la team clachoufoufou");
-  setTimeout(japanreadScraper, 5 * 60 * 1000);
 }
-
 async function checkScrapingData(allMangasOfTheWebPage) {
   let mangaToPost = [];
   //je vérifie si les mangas récupérés sont dans un tableau pour les manga postés
