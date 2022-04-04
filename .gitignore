@@ -13,3 +13,4 @@ image
 getallimgurimages.txt
 newindex.save.js
 scraper/scraper.js
+*.js

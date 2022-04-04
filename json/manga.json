@@ -510,56 +510,68 @@
     "roleId": "931259645388009602",
     "imageFolder": "Ansatsu Skill de Isekai Saikyou Renkinjutsu to Ansatsujutsu o Kiwameta Ore wa, Sekai o Kage kara Shihai suru",
     "synopsis": "Late, un assassin avec un taux d'achèvement de mission de 99,9%, reçoit soudainement une demande d'assassinat d'un client inconnu.\nÉtonnamment, le client est la déesse d'un autre monde, \"Mises\", qui a perdu la bataille et est en train d'être détruite.\nLe contenu de la demande de Mises est l'assassinat de \"Masla Zul, le dieu d'un autre monde\".\nLa prochaine cible de l'assassin le plus fort de Late est \"le dieu d'un autre monde\" !??"
-  },{
-    "name":"Ore no Iinazuke ni Natta Jimiko, Ie de wa Kawaii Shika nai",
-    "img":"",
-    "role":"ore no Iinazuke ni natta jimiko, Ie de wa kawaii shika nai", 
-    "roleId":"939825777111867392",
-    "imageFolder":"Ore no Iinazuke ni Natta Jimiko, Ie de wa Kawaii Shika nai",
-    "synopsis":"Je ne suis pas très doué avec les filles et ne suis intéressé que par le monde du 2D. Je me suis toujours dit que l'amour n'était pas fait pour moi, et pourtant, à cause de la situation de mes parents, je me retrouve à devoir me marier ! Et pour couronner le tout, c'est avec Watanae Yuka, une fille de ma classe !",
-    "link":"https://www.japanread.cc/manga/ore-no-iinazuke-ni-natta-jimiko-ie-de-wa-kawaii-shika-nai"
-  },{
-    "name":"Saotome Shimai wa Manga no Tame nara!?",
-    "img":"",
-    "role":"saotome shimai wa manga no tame nara!?", 
-    "roleId":"939833254767378492",
-    "imageFolder":"Saotome Shimai wa Manga no Tame nara!",
-    "synopsis":"Nobuyuki Saotome est un jeune mangaka de 16 ans. Pour l'aider dans son travail, il peut compter sur ses deux sœurs qui lui servent d'assistantes : Noan 18 ans, et Kanon 14 ans.\n\nMalheureusement pour lui, ces dernières sont folles amoureuses de lui et font tout pour le séduire (de manière plus ou moins agressive). Ironiquement, ces différentes tentatives semi-érotiques semblent offrir au jeune mangaka de la matière pour son oeuvre (lui faisant gagner une fanbase de plus en plus grande).",
-    "link":"https://www.japanread.cc/manga/saotome-shimai-wa-manga-no-tame-nara"
-  },{
-    "name":"Kanchigai no Atelier Meister",
-    "img":"",
-    "role":"kanchigai no atelier meister", 
-    "roleId":"942363457729216553",
-    "imageFolder":"Kanchigai no Atelier Meister",
-    "synopsis":"Kuruto se fait virer de l'équipe des héros parce qu'il est trop inutile. Cependant, il découvre que dans tout le reste, comme la cuisine, la construction, la fabrication d'outils magiques, etc., il est de rang SSS.",
-    "link":"https://www.japanread.cc/manga/kanchigai-no-atelier-meister"
   },
   {
-    "name":"That Girl Is Cute... But Dangerous?",
-    "img":"",
-    "role":"that girl is cute... but dangerous?", 
-    "roleId":"944884868666507335",
-    "imageFolder":"That Girl Is Cute... But Dangerous",
-    "synopsis":"[Cette fille est mignonne... mais dangereuse]. La personne assise à côté de moi en ce début de semestre est la fille Jirai dont toutes les rumeurs parlent....mais...Chihara-san est-elle vraiment la [jirai] que tout le monde imagine ?",
-    "link":"https://www.japanread.cc/manga/that-girl-is-cute-but-dangerous"
+    "name": "Ore no Iinazuke ni Natta Jimiko, Ie de wa Kawaii Shika nai",
+    "img": "",
+    "role": "ore no Iinazuke ni natta jimiko, Ie de wa kawaii shika nai",
+    "roleId": "939825777111867392",
+    "imageFolder": "Ore no Iinazuke ni Natta Jimiko, Ie de wa Kawaii Shika nai",
+    "synopsis": "Je ne suis pas très doué avec les filles et ne suis intéressé que par le monde du 2D. Je me suis toujours dit que l'amour n'était pas fait pour moi, et pourtant, à cause de la situation de mes parents, je me retrouve à devoir me marier ! Et pour couronner le tout, c'est avec Watanae Yuka, une fille de ma classe !",
+    "link": "https://www.japanread.cc/manga/ore-no-iinazuke-ni-natta-jimiko-ie-de-wa-kawaii-shika-nai"
   },
   {
-    "name":"Kanojo ni Uwaki Sareteita Ore ga, Shou Akuma na Kouhai ni Natsukarete Imasu",
-    "img":"",
-    "role":"kanojo ni uwaki sareteita ore ga, shou akuma na kouhai ni natsukarete imasu", 
-    "roleId":"948576764932804618",
-    "imageFolder":"Kanojo ni Uwaki Sareteita Ore ga, Shou Akuma na Kouhai ni Natsukarete Imasu",
-    "synopsis":"Hanesegawa Yuta est un étudiant de deuxième année à l'université qui a été trompé par sa petite amie juste avant Noël. Après une conversation normale avec son amie, Mino Ayaka, Yuta a rencontré une belle fille vêtue d'un costume de Mère Noël dans une rue pleine de couples ! \n\n Le nom de cette jolie jeune fille est Shinohara Mayu. Cette rencontre avec Shinohara se révélera-t-elle être le cadeau de Noël de Yuta ?",
-    "link":"japanread.cc/manga/kanojo-ni-uwaki-sareteita-ore-ga-shou-akuma-na-kouhai-ni-natsukarete-imasu"
+    "name": "Saotome Shimai wa Manga no Tame nara!?",
+    "img": "",
+    "role": "saotome shimai wa manga no tame nara!?",
+    "roleId": "939833254767378492",
+    "imageFolder": "Saotome Shimai wa Manga no Tame nara!",
+    "synopsis": "Nobuyuki Saotome est un jeune mangaka de 16 ans. Pour l'aider dans son travail, il peut compter sur ses deux sœurs qui lui servent d'assistantes : Noan 18 ans, et Kanon 14 ans.\n\nMalheureusement pour lui, ces dernières sont folles amoureuses de lui et font tout pour le séduire (de manière plus ou moins agressive). Ironiquement, ces différentes tentatives semi-érotiques semblent offrir au jeune mangaka de la matière pour son oeuvre (lui faisant gagner une fanbase de plus en plus grande).",
+    "link": "https://www.japanread.cc/manga/saotome-shimai-wa-manga-no-tame-nara"
   },
   {
-    "name":"Moto Sekai Ichii no Sub-chara Ikusei Nikki - Hai Player, Isekai wo Kouryaku-chuu!",
-    "img":"",
-    "role":"moto sekai ichii no sub-chara ikusei nikki - hai player, isekai wo kouryaku-chuu!", 
-    "roleId":"948587393622097960",
-    "imageFolder":"Moto Sekai Ichi'i Subchara Ikusei Nikki Hai Player, Isekai wo Kouryakuchuu!",
-    "synopsis":"Etant rarement sur les bancs de l'école pendant ses années de collège et de lycée, notre protagoniste se retrouve au chômage dans sa vie d'adulte.\n Du matin au soir, il ne pensait qu'à jouer à un jeu vidéo en ligne. Y étant classé numéro un, il a fait de ce jeu sa raison de vivre.\n\nUn jour, son compte a été piraté, son personnage supprimé et il s'est retrouvé dans l'impossibilité de récupérer ses données. Ressentant un grand désespoir après avoir perdu le rang pour lequel il avait tout misé dans un monde qui contrôlait sa vie, il tenta alors de se suicider.\n\nAlors qu'il se réveille, il se retrouve à l'intérieur du jeu vidéo, plus précisément dans un monde réel qui y ressemble beaucoup. Il s'aperçoit alors qu'il s'est réincarné dans le corps d'un personnage secondaire qu'il avait créé, laissé de côté et pour lequel il avait acheté des avantages premium il y a longtemps.",
-    "link":"https://www.japanread.cc/manga/moto-sekai-ichii-no-sub-chara-ikusei-nikki-hai-player-isekai-wo-kouryaku-chuu"
+    "name": "Kanchigai no Atelier Meister",
+    "img": "",
+    "role": "kanchigai no atelier meister",
+    "roleId": "942363457729216553",
+    "imageFolder": "Kanchigai no Atelier Meister",
+    "synopsis": "Kuruto se fait virer de l'équipe des héros parce qu'il est trop inutile. Cependant, il découvre que dans tout le reste, comme la cuisine, la construction, la fabrication d'outils magiques, etc., il est de rang SSS.",
+    "link": "https://www.japanread.cc/manga/kanchigai-no-atelier-meister"
+  },
+  {
+    "name": "That Girl Is Cute... But Dangerous?",
+    "img": "",
+    "role": "that girl is cute... but dangerous?",
+    "roleId": "944884868666507335",
+    "imageFolder": "That Girl Is Cute... But Dangerous",
+    "synopsis": "[Cette fille est mignonne... mais dangereuse]. La personne assise à côté de moi en ce début de semestre est la fille Jirai dont toutes les rumeurs parlent....mais...Chihara-san est-elle vraiment la [jirai] que tout le monde imagine ?",
+    "link": "https://www.japanread.cc/manga/that-girl-is-cute-but-dangerous"
+  },
+  {
+    "name": "Kanojo ni Uwaki Sareteita Ore ga, Shou Akuma na Kouhai ni Natsukarete Imasu",
+    "img": "",
+    "role": "kanojo ni uwaki sareteita ore ga, shou akuma na kouhai ni natsukarete imasu",
+    "roleId": "948576764932804618",
+    "imageFolder": "Kanojo ni Uwaki Sareteita Ore ga, Shou Akuma na Kouhai ni Natsukarete Imasu",
+    "synopsis": "Hanesegawa Yuta est un étudiant de deuxième année à l'université qui a été trompé par sa petite amie juste avant Noël. Après une conversation normale avec son amie, Mino Ayaka, Yuta a rencontré une belle fille vêtue d'un costume de Mère Noël dans une rue pleine de couples ! \n\n Le nom de cette jolie jeune fille est Shinohara Mayu. Cette rencontre avec Shinohara se révélera-t-elle être le cadeau de Noël de Yuta ?",
+    "link": "https://www.bentomanga.com/manga/kanojo-ni-uwaki-sareteita-ore-ga-shou-akuma-na-kouhai-ni-natsukarete-imasu"
+  },
+  {
+    "name": "Moto Sekai Ichii no Sub-chara Ikusei Nikki - Hai Player, Isekai wo Kouryaku-chuu!",
+    "img": "",
+    "role": "moto sekai ichii no sub-chara ikusei nikki - hai player, isekai wo kouryaku-chuu!",
+    "roleId": "948587393622097960",
+    "imageFolder": "Moto Sekai Ichi'i Subchara Ikusei Nikki Hai Player, Isekai wo Kouryakuchuu!",
+    "synopsis": "Etant rarement sur les bancs de l'école pendant ses années de collège et de lycée, notre protagoniste se retrouve au chômage dans sa vie d'adulte.\n Du matin au soir, il ne pensait qu'à jouer à un jeu vidéo en ligne. Y étant classé numéro un, il a fait de ce jeu sa raison de vivre.\n\nUn jour, son compte a été piraté, son personnage supprimé et il s'est retrouvé dans l'impossibilité de récupérer ses données. Ressentant un grand désespoir après avoir perdu le rang pour lequel il avait tout misé dans un monde qui contrôlait sa vie, il tenta alors de se suicider.\n\nAlors qu'il se réveille, il se retrouve à l'intérieur du jeu vidéo, plus précisément dans un monde réel qui y ressemble beaucoup. Il s'aperçoit alors qu'il s'est réincarné dans le corps d'un personnage secondaire qu'il avait créé, laissé de côté et pour lequel il avait acheté des avantages premium il y a longtemps.",
+    "link": "https://www.bentomanga.com/manga/moto-sekai-ichii-no-sub-chara-ikusei-nikki-hai-player-isekai-wo-kouryaku-chuu"
+  },
+  {
+    "name": "The Many Weaknesses of Ayaka the Yankee JK",
+    "img": "",
+    "role": "the many weaknesses of ayaka the yankee jk",
+    "roleId": "960187846579347527",
+    "imageFolder": "The Many Weaknesses of Ayaka the Yankee JK",
+    "synopsis": "Itsuki Hayashi, un otaku timide qui vient d'entrer au lycée et qui veut devenir mangaka, est assis à côté d'une Yankee JK à l'allure très effrayante ! La façon dont elle parle, son apparence, sa façon d'agir, tout en elle est terrifiant... Mais il s'avère qu'elle a beaucoup de faiblesses inattendues !",
+    "link": "https://www.bentomanga.com/manga/the-many-weaknesses-of-ayaka-the-yankee-jk"
   }
 ]

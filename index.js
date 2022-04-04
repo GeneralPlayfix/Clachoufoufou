@@ -163,6 +163,7 @@ async function getAllChapter(allMangasOfTheWebPage) {
   }
   if (mangaToPost.length == 0) console.log("Pas de nouveauté de la team clachoufoufou");
 }
+
 async function checkScrapingData(allMangasOfTheWebPage) {
   let mangaToPost = [];
   //je vérifie si les mangas récupérés sont dans un tableau pour les manga postés
