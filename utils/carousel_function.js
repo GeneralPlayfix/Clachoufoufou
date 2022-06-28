@@ -1,5 +1,5 @@
-  
-const { ReactionUserManager,MessageEmbed,  } = require("discord.js");
+
+const { ReactionUserManager, MessageEmbed, } = require("discord.js");
 const reactEmoji = ["◀️", "▶️", "⏪", "⏩"]
 const botId = "856535282849021963";
 
@@ -17,6 +17,7 @@ async function getImageLink(folderName) {
 }
 
 async function getMangaFromJson(title) {
+  let indexJson = ""
   const jsonOfMangas = await getSortedProject();
   for (let i = 0; i < jsonOfMangas.length; i++) {
     if (jsonOfMangas[i].name.toLowerCase() == title.toLowerCase()) {
@@ -50,7 +51,7 @@ async function getProjectId(title) {
   return indexJson;
 }
 
-async function getSortedProject(){
+async function getSortedProject() {
   delete require.cache[require.resolve(`../json/manga.json`)]
   const data = require("../json/manga.json");
   return data.sort(function (a, b) {

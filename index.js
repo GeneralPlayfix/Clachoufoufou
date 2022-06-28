@@ -5,12 +5,15 @@ const {
   MessageAttachment,
   WebhookClient
 } = require("discord.js");
-const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer-extra");
+const StealthPlugin = require('puppeteer-extra-plugin-stealth')
+puppeteer.use(StealthPlugin())
+
 const fs = require("fs");
 // var cron = require("node-cron");/
-var axios = require('axios');
+const axios = require('axios');
 var FormData = require('form-data');
-
+const CLACHOUFOUFOUIDMANGADEX = "ed6dc389-cc4a-49bd-a43d-dcb1416a4f93";
 const client = new Client();
 const configFolder = "./config/";
 
@@ -21,21 +24,102 @@ let arrayOfSentences = require("./json/readingSentence.json");
 
 fileGenerator();
 main();
-// fuck()
 
 function main() {
   client.login(token.token);
   client.on("ready", () => {
     console.log(`${client.user.tag} is online!`);
-    setTimeout(japanreadScraper, 0);
+    // setTimeout(japanreadScraper, 0);
     setTimeout(normalBotCommands, 0);
+    setInterval(mangadexApiTest, 30 * 60 * 1000)
     // setTimeout(test, 150);
   });
 }
+
+async function mangadexApiTest(){
+  let mangas = [];
+  //=============== Récupération des x derniers mangas de la team (les sorties ne se base pas que sur celles de la team, il faut donc en prendre beaucoup)
+  let getMangaOfTeam = `https://api.mangadex.org/manga?group=${CLACHOUFOUFOUIDMANGADEX}&limit=25`
+  await axios.get(getMangaOfTeam)
+  .then(response => {
+      let data =  response.data.data;
+      // je cycle sur chaque manga récupéré sur l'api
+      for (let truedata of data){
+        mangas.push(
+          {
+            id:truedata.id,
+            name:truedata.attributes.title[Object.keys(truedata.attributes.title)[0]]
+          }
+          )
+      } 
+    });
+  //============== Récupération de tous les chapitres des mangas précédemment récupérés
+  let allMangasAndChaptersToPost = []
+  for(let manga of mangas){
+      const carousel_function = require("./utils/carousel_function.js");
+      let project = await carousel_function.getMangaFromJson(manga.name)
+      if (project == undefined) {
+          console.log(manga.name + " est invalide")
+          continue;
+      }
+      let allChaptersOfManga = []
+      let getMangaChapters = `https://api.mangadex.org/chapter?limit=10&groups%5B%5D=${CLACHOUFOUFOUIDMANGADEX}&manga=${manga.id}&contentRating%5B%5D=safe&contentRating%5B%5D=suggestive&contentRating%5B%5D=erotica&includeFutureUpdates=1&order%5Bchapter%5D=desc`
+      await axios.get(getMangaChapters).then(response => {
+        let responseStatus = response.data;  
+        let chapters = responseStatus.data
+        for (let chapter of chapters){
+          let chapterAttritubes = chapter.attributes 
+          let chapterId = chapter.id
+          let volume = chapterAttritubes.volume
+          let chapterNumber = chapterAttritubes.chapter
+          let chapterTitle = chapterAttritubes.title
+          let publishDate = chapterAttritubes.publishAt
+          let totalPageNumber = chapterAttritubes.pages
+          
+          let currentDate = new Date();
+          let mangadexDate = new Date(`${publishDate}`)
+          //je compare ma data actuelle a celle du chapitre sur mangadex
+          let difference = currentDate - mangadexDate
+
+          //si la différence est supérieur à 3 h, je ne récupère pas le chapitre
+          if(difference > 3600000) continue;
+          let chapTitle = ""
+          if(volume != null){
+              if(chapterTitle != null){
+                  chapTitle = `Volume ${volume} - chapitre ${chapterNumber} : ${chapterTitle}`
+              }else{
+                  chapTitle = `Volume ${volume} - chapitre ${chapterNumber}`
+              }
+          }else{
+              chapTitle = `Chapitre ${chapterNumber}`
+          }
+          allChaptersOfManga.push({
+              title: manga.name, 
+              chapNum:chapTitle,
+              chapLink: `https://mangadex.org/chapter/${chapterId}`,
+              totalPageNumber:totalPageNumber
+          })
+      }
+      });
+      //je vérifie s'il y a des nouveaux chapitres 
+      if (allChaptersOfManga.length == 0) continue;
+      for (manga of allChaptersOfManga){
+          allMangasAndChaptersToPost.push(manga)
+      }
+  }
+  let mangaToPost = [];
+  if (allMangasAndChaptersToPost.length != 0) {
+      mangaToPost = await checkScrapingData(allMangasAndChaptersToPost);
+    if (mangaToPost.length != 0) {
+      await generateEmbedForMangasToPost(mangaToPost);
+    }
+  }
+  if (mangaToPost.length == 0) console.log("Pas de nouveauté de la team clachoufoufou");
+}
 //#region scraper
 let allPostedMangas = [];
-// fuck()
-async function fuck() {
+// getImgurImage()
+async function getImgurImage() {
   // delete require.cache[require.resolve(`./utils/carousel_function.js`)]
   // const carousel_function = require("./utils/carousel_function.js");
 
@@ -89,90 +173,16 @@ async function fuck() {
       console.log(err)
     }
   })
-}
-async function japanreadScraper() {
-  var allMangasOfTheWebPage = [];
-  const browser = await puppeteer.launch({ headless: true }); //headless false permet de démarer une instance visible de chromium
-  const page = await browser.newPage();
-  page.setDefaultNavigationTimeout(0);
-  page.setUserAgent("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
-  await page.goto(`https://bentomanga.com/team/team-clachoufoufou/projects?order=desc`, {
-    waitUntil: ["load", "domcontentloaded", "networkidle0", "networkidle2"],
-  });
-  allMangasOfTheWebPage = await page.evaluate(() => {
-    let mangas = []
-    let a = document.querySelectorAll("#projects_content > div > div.div-manga_datas > div.div-manga_datas-header > a")
-    for (let manga of a) {
-      let link = manga.href
-      let title = manga.querySelector("div > div.component-manga-title_main > h1").innerText
-      mangas.push({
-        title: title,
-        mangaLink: link
-      })
-    }
-    return mangas
-  });
-  await browser.close()
-  await getAllChapter(allMangasOfTheWebPage)
-  setTimeout(japanreadScraper, 5 * 60 * 1000);
-}
-async function getAllChapter(allMangasOfTheWebPage) {
-  const browser = await puppeteer.launch({ headless: true }); //headless false permet de démarer une instance visible de chromium
-  let allChapterInformations = []
-  for (let manga of allMangasOfTheWebPage) {
-    let chapters = []
-    const page = await browser.newPage();
-    page.setDefaultNavigationTimeout(0);
-    page.setUserAgent("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
-    await page.goto(`${manga.mangaLink}`, {
-      waitUntil: ["load", "domcontentloaded", "networkidle0", "networkidle2"],
-    });
-    chapters = await page.evaluate(() => {
-      let allAvaibleChapters = document.querySelectorAll("#chapters_content > div > div")
-      let chapNum = ""
-      let chapToExport = []
-      for (let chapter of allAvaibleChapters) {
-        let dateArray = chapter.querySelector("div.component-chapter-date").innerText.split(" ")
-        let duration = dateArray[0]
-        let unity = dateArray[1]
-        if (unity == "s" || unity == "min" && duration <= 45) {
-          chapNum = chapter.querySelector("div.component-chapter-title > a > span.manga_nb_chapter").innerText
-          let chapLink = chapter.querySelector("div.component-chapter-title > a").href
-          let title = document.querySelector("#manga > div.manga-infos > div.component-manga-title > div.component-manga-title_main > h1").innerText
-          chapToExport.push({
-            title: title,
-            chapNum: chapNum,
-            chapLink: chapLink
-          })
-        }
-      }
-      return chapToExport
-    });
-    for (let chapter of chapters) {
-      allChapterInformations.push(chapter)
-    }
-    await page.close()
-  }
-  await browser.close()
-  let mangaToPost = [];
-  if (allChapterInformations.length != 0) {
-    mangaToPost = await checkScrapingData(allChapterInformations);
-    if (mangaToPost.length != 0) {
-      await generateEmbedForMangasToPost(mangaToPost);
-    }
-  }
-  if (mangaToPost.length == 0) console.log("Pas de nouveauté de la team clachoufoufou");
-}
-
-async function checkScrapingData(allMangasOfTheWebPage) {
+}  
+async function checkScrapingData(allMangasToPost) {
   let mangaToPost = [];
   //je vérifie si les mangas récupérés sont dans un tableau pour les manga postés
-  for (let i = 0; i < allMangasOfTheWebPage.length; i++) {
-    if (!(allPostedMangas.find((chap) => chap.title == allMangasOfTheWebPage[i].title) && allPostedMangas.find((chap) => chap.chapNum == allMangasOfTheWebPage[i].chapNum) && allPostedMangas.find((chap) => chap.chapLink == allMangasOfTheWebPage[i].chapLink))) {
+  for (let i = 0; i < allMangasToPost.length; i++) {
+    if (!(allPostedMangas.find((chap) => chap.title == allMangasToPost[i].title) && allPostedMangas.find((chap) => chap.chapNum == allMangasToPost[i].chapNum) && allPostedMangas.find((chap) => chap.chapLink == allMangasToPost[i].chapLink))) {
       //je prépare le post
-      mangaToPost.push(allMangasOfTheWebPage[i])
+      mangaToPost.push(allMangasToPost[i])
       //je les ajoutes aux mangas postés
-      allPostedMangas.push(allMangasOfTheWebPage[i])
+      allPostedMangas.push(allMangasToPost[i])
     }
   }
   return mangaToPost;
@@ -182,14 +192,16 @@ async function generateEmbedForMangasToPost(mangaToPost) {
   delete require.cache[require.resolve(`./utils/carousel_function.js`)]
   const carousel_function = require("./utils/carousel_function.js");
 
-  for (let i = mangaToPost.length - 1; i >= 0; i--) {
+  for (let i = 0; i < mangaToPost.length; i++) {
     let title = mangaToPost[i].title;
     let chapNum = mangaToPost[i].chapNum
     let link = mangaToPost[i].chapLink;
+    let numberOfPage = mangaToPost[i].totalPageNumber;
     //je récupère le json avec tous les informations du manga
     let mangaFromJson = await carousel_function.getMangaFromJson(title)
     //je récupère le json avec tous les liens d'image 
     let imagesJson = await carousel_function.getImageLink(mangaFromJson.imageFolder);
+
     let imagesArray = imagesJson.images.split(" ")
     let randomImage = imagesArray[~~(Math.random() * imagesArray.length)];
     var sentence = arrayOfSentences[~~(Math.random() * arrayOfSentences.length)].sentence;
@@ -199,17 +211,18 @@ async function generateEmbedForMangasToPost(mangaToPost) {
     const embed = new MessageEmbed();
     embed.setTitle(`${title}`);
     embed.setColor("3996CE");
-    embed.setDescription(`[${sentence} ${chapNum}](${link})`);
-    embed.setFooter(`A bot made by GeneralPlayfix`);
+    embed.setDescription(`[${sentence} ${chapNum}](${link}) \n Un chapitre de ${numberOfPage}`);
+    embed.setFooter('A bot made by GeneralPlayfix');
     embed.setImage(`${randomImage}`);
-    Channel.send(`${role}`, embed).then(async msg => {
-      await msg.react("◀️")
-      await msg.react("▶️")
-      try {
-        await msg.crosspost()
-      } catch (e) {
-      }
-    })
+    Channel.send(`${role}`, embed).then((response) => response.crosspost()).catch((e) => console.log(e));
+  // Channel.send(`${role}`, embed).then(async msg => {
+  //     await msg.react("◀️")
+  //     await msg.react("▶️")
+  //     try {
+  //       await msg.crosspost()
+  //     } catch (e) {
+  //     }
+  //   })
   }
 }
 //#endregion
@@ -238,7 +251,6 @@ function fileGenerator() {
   const configFile = [];
   fs.readdirSync(commandsFolder).forEach((file) => {
     let fileWithoutExtension = file.replace(".js", "");
-
     commandFile.push(fileWithoutExtension);
   });
   fs.readdirSync(configFolder).forEach((file) => {
